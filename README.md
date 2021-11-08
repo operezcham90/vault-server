@@ -1,8 +1,12 @@
 # Introduction 📖
 A local storage server to organize home files.
 
+# Requirements 📃
+* A computer
+* An external hard drive
+* A local area network
+
 # Installation ⚒
-* Check the state of the Lenovo G470.
 * Install Ubuntu 16.04 LTS.
 * Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
 ```
