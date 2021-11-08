@@ -1,8 +1,8 @@
 #!/bin/bash
-apt-get update
-apt-get upgrade
-apt-get install openssh-server
+apt-get -y update
+apt-get -y install openssh-server
 /etc/init.d/ssh start
-apt-get install curl
+apt-get -y install curl
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
-apt-get install nodejs
+apt-get -y install nodejs
+apt-get -y install git
