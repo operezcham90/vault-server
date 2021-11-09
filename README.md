@@ -7,7 +7,7 @@ A local storage server to organize home files.
 * A local area network
 
 # Installation ⚒
-* Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/).
+* Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
 * Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
 ```
 chmod +x setup.sh
