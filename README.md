@@ -14,7 +14,7 @@ wget https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
-* Run [start.sh]
+* Run server
 ```
 cd vault*
 sudo npm start
