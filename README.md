@@ -10,5 +10,5 @@ A local storage server to organize home files 🏠
 * Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
 * Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
 ```
-wget -O - https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh | bash
+sudo wget -O - https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh | bash
 ```
