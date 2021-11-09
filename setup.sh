@@ -7,3 +7,4 @@ apt-get -y install curl
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 apt-get -y install nodejs
 apt-get -y install git
+git clone https://github.com/operezcham90/vault-server.git

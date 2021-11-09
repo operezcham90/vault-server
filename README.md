@@ -13,7 +13,3 @@ A local storage server to organize home files.
 chmod +x setup.sh
 sudo ./setup.sh
 ```
-* Clone this repository
-```
-git clone https://github.com/operezcham90/vault-server.git
-```
