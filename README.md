@@ -10,6 +10,7 @@ A local storage server to organize home files 🏠
 * Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
 * Install [SSH](https://www.openssh.com/) (optional)
 ```
+sudo apt-get update
 sudo apt-get -y install openssh-server
 sudo /etc/init.d/ssh start
 ```
