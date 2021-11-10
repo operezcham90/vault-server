@@ -1,8 +1,8 @@
 'use strict'
 
 const fs = require('fs')
-const { exec } = require("child_process")
-const { networkInterfaces } = require('os');
+const cp = require("child_process")
+const os = require('os');
 
 const req = {
     ip: '192.168.0.1',
