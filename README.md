@@ -10,7 +10,7 @@ A local storage server to organize home files 🏠
 * Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
 * Install SSH (optional)
 ```
-sudo apt-get install openssh-server
+sudo apt-get -y install openssh-server
 sudo /etc/init.d/ssh start
 ```
 * Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
