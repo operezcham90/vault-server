@@ -1,12 +1,12 @@
-# Introduction 📖
+# Introduction
 A local storage server to organize home files 🏠
 
-# Requirements 📃
+# Requirements
 * A computer 💻
 * An external hard drive 💿
 * A local area network 🌐
 
-# Installation ⚒
+# Installation
 * Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
 * Install SSH (optional)
 ```
