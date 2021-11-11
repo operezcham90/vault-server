@@ -37,7 +37,7 @@ const req = {
     },
     write: async () => {
         req.build()
-        const err = await fs.writeFile('./req', req.text)
+        const err = await fs.promises.writeFile('./req', req.text)
         if (err) {
             console.error(err)
         }
