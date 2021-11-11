@@ -70,7 +70,6 @@ const cert = {
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
         if (res.stderr) {
             console.error(res.stderr)
-            return
         }
         cert.value.cert = await fs.promises.readFileSync('./domain.cert')
         cert.value.key = await fs.promises.readFileSync('./domain.key')
