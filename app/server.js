@@ -7,7 +7,7 @@ const start = async () => {
         res.writeHead(200)
         res.end('hello world\n')
         console.log('hello world\n')
-    }).listen(443)
+    }).listen(443, cert.ip)
 }
 
 start()

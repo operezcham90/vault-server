@@ -13,6 +13,7 @@ const ip = {
             for (const net of nets[name]) {
                 if (net.family === 'IPv4' && !net.internal) {
                     ip.value = net.address
+                    cert.ip = ip.value
                 }
             }
         }
@@ -58,6 +59,7 @@ const req = {
 }
 
 const cert = {
+    ip: '',
     command: 'openssl',
     arguments: [
         'req',
