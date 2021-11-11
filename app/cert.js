@@ -77,4 +77,4 @@ const cert = {
     }
 }
 
-module.export = cert
+module.exports = cert
