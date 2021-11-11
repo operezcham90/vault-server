@@ -1,11 +1,17 @@
 'use strict'
 
 const fs = require('fs')
-const cp = require("child_process")
 const os = require('os');
+const cp = require("child_process")
+
+const ip = {
+    value: '',
+    build: () => {
+        ip.value = '192.168.0.1' | os.networkInterfaces().eth0.address
+    }
+}
 
 const req = {
-    ip: '192.168.0.1',
     text: '',
     erase: () => {
         req.text = ''
@@ -27,15 +33,16 @@ const req = {
         req.section('req_distinguished_name')
         req.property('O', 'Home')
         req.property('OU', 'Storage')
-        req.property('CN', req.ip)
+        req.property('CN', ip.value)
         req.section('v3_req')
         req.property('keyUsage', 'keyEncipherment, dataEncipherment')
         req.property('extendedKeyUsage', 'serverAuth')
         req.property('subjectAltName', '@alt_names')
         req.section('alt_names')
-        req.property('IP.1', req.ip)
+        req.property('IP.1', ip.value)
     },
     write: async () => {
+        ip.build()
         req.build()
         const err = await fs.promises.writeFile('./req', req.text)
         if (err) {
