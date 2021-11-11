@@ -48,7 +48,7 @@ const req = {
     write: async () => {
         ip.build()
         req.build()
-        const err = await fs.promises.writeFile('./temp/req', req.text)
+        const err = await fs.promises.writeFile('./req', req.text)
         if (err) {
             console.error(err)
         }
@@ -59,7 +59,7 @@ const cert = {
     command: 'openssl',
     arguments: [
         'req', '-new', '-nodes', '-x509', '-days', '365', '-keyout',
-        './temp/domain.key', '-out', '.temp/domain.crt', '-config', './temp/req'
+        './domain.key', '-out', './domain.crt', '-config', './req'
     ],
     value: {
         key: '',
@@ -72,8 +72,8 @@ const cert = {
             console.error(res.stderr)
             return
         }
-        cert.value.cert = await fs.promises.readFileSync('./temp/domain.cert')
-        cert.value.key = await fs.promises.readFileSync('./temp/domain.key')
+        cert.value.cert = await fs.promises.readFileSync('./domain.cert')
+        cert.value.key = await fs.promises.readFileSync('./domain.key')
     }
 }
 
