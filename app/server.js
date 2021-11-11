@@ -3,7 +3,7 @@ const cert = require('./cert.js')
 
 const start = async () => {
     await cert.run()
-    https.createServer({}, (req, res) => {
+    https.createServer(cert.value, (req, res) => {
         res.writeHead(200)
         res.end('hello world\n')
         console.log('hello world\n')
