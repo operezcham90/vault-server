@@ -58,8 +58,7 @@ const req = {
 const cert = {
     command: 'openssl',
     arguments: [
-        'req', '-new', '-nodes', '-x509', '-days', '365', '-keyout',
-        'domain.key', '-out', 'domain.crt', '-config', 'req'
+        'req', '-new', '-nodes', '-x509', '-days', '365'
     ],
     value: {
         key: '',
@@ -68,8 +67,9 @@ const cert = {
     run: async () => {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
-        //cert.value.cert = await fs.promises.readFile('./domain.crt')
-        //cert.value.key = await fs.promises.readFile('./domain.key')
+        console.log(res)
+        cert.value.cert = await fs.promises.readFile('./domain.crt')
+        cert.value.key = await fs.promises.readFile('./domain.key')
     }
 }
 
