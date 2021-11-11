@@ -12,7 +12,6 @@ A local storage server to organize home files 🏠
 ```
 sudo apt-get update
 sudo apt-get -y install openssh-server
-sudo /etc/init.d/ssh start
 ```
 * Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
 ```
