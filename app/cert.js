@@ -64,11 +64,15 @@ const cert = {
         '-x509',
         '-newkey',
         'rsa:4096',
-        '-days 365',
-        '-keyout key',
-        '-out crt',
+        '-days',
+        '365',
+        '-keyout',
+        'key',
+        '-out',
+        'crt',
         '-sha256',
-        '-config req'
+        '-config',
+        'req'
     ],
     value: {
         key: '',
