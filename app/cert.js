@@ -78,8 +78,10 @@ const cert = {
     run: async () => {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
-        cert.value.cert = fs.readFileSync('~/vault/domain.cer')
-        cert.value.key = fs.readFileSync('~/vault/domain.key')
+        console.log(res)
+        console.log(os.homedir())
+        cert.value.cert = await fs.promises.readFile('~/vault/domain.cer')
+        cert.value.key = await fs.promises.readFile('~/vault/domain.key')
     }
 }
 
