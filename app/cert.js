@@ -35,6 +35,9 @@ const req = {
         req.property('x509_extensions', 'v3_req')
         req.property('prompt', 'no')
         req.section('req_distinguished_name')
+        req.property('C', 'MX')
+        req.property('S', 'San Luis Potosi')
+        req.property('L', 'San Luis Potosi')
         req.property('O', 'Home')
         req.property('OU', 'Storage')
         req.property('CN', ip.value)
@@ -48,7 +51,7 @@ const req = {
     write: async () => {
         ip.build()
         req.build()
-        const err = await fs.promises.writeFile('./req', req.text)
+        const err = await fs.promises.writeFile('~/vault/domain.req', req.text)
         if (err) {
             console.error(err)
         }
@@ -62,15 +65,11 @@ const cert = {
         '-new',
         '-nodes',
         '-x509',
-        '-days',
-        '365',
-        '-keyout',
-        'key',
-        '-out',
-        'crt',
+        '-days', '365',
+        '-keyout', '~/vault/domain.key',
+        '-out', '~/vault/domain.cer',
         '-sha256',
-        '-config',
-        'req'
+        '-config', '~/vault/domain.req'
     ],
     value: {
         key: '',
@@ -79,9 +78,8 @@ const cert = {
     run: async () => {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
-        console.log(res)
-        cert.value.cert = fs.readFileSync('crt')
-        cert.value.key = fs.readFileSync('key')
+        cert.value.cert = fs.readFileSync('~/vault/domain.cer')
+        cert.value.key = fs.readFileSync('~/vault/domain.key')
     }
 }
 
