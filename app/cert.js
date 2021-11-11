@@ -7,7 +7,7 @@ const cp = require("child_process")
 const ip = {
     value: '',
     build: () => {
-        ip.value = '192.168.0.1' | os.networkInterfaces().eth0.address
+        console.log(os.networkInterfaces())
     }
 }
 
