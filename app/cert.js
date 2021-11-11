@@ -7,7 +7,14 @@ const cp = require("child_process")
 const ip = {
     value: '',
     build: () => {
-        console.log(os.networkInterfaces())
+        const nets = os.networkInterfaces()
+        for (const name of Object.keys(nets)) {
+            for (const net of nets[name]) {
+                if (net.family === 'IPv4' && !net.internal) {
+                    ip.value = net.address;
+                }
+            }
+        }
     }
 }
 
