@@ -59,10 +59,10 @@ const cert = {
     command: 'openssl',
     arguments: [
         'req',
-        '-newkey rsa:4096',
         '-new',
         '-nodes',
         '-x509',
+        '-newkey rsa:4096',
         '-days 365',
         '-keyout key',
         '-out crt',
