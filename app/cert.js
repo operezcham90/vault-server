@@ -68,6 +68,7 @@ const cert = {
         'key',
         '-out',
         'crt',
+        '-sha256',
         '-config',
         'req'
     ],
@@ -77,7 +78,8 @@ const cert = {
     },
     run: async () => {
         await req.write()
-        await util.promisify(cp.execFile)(cert.command, cert.arguments)
+        const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
+        console.log(res)
         cert.value.cert = fs.readFileSync('crt')
         cert.value.key = fs.readFileSync('key')
     }
