@@ -36,9 +36,12 @@ const req = {
         req.property('IP.1', req.ip)
     },
     write: async () => {
+        req.build()
         const err = await fs.writeFile('./req', req.text)
         if (err) {
             console.error(err)
         }
     }
 }
+
+req.write()
