@@ -71,8 +71,8 @@ const cert = {
         if (res.stderr) {
             console.error(res.stderr)
         }
-        cert.value.cert = await fs.promises.readFileSync('./domain.cert')
-        cert.value.key = await fs.promises.readFileSync('./domain.key')
+        cert.value.cert = await fs.promises.readFile('./domain.cert')
+        cert.value.key = await fs.promises.readFile('./domain.key')
     }
 }
 
