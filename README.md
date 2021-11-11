@@ -7,7 +7,7 @@ A local storage server to organize home files 🏠
 * A local area network 🌐
 
 # Installation
-* Install [Ubuntu 16.04 LTS](https://releases.ubuntu.com/16.04/)
+* Install [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/)
 * Install [SSH](https://www.openssh.com/) (optional)
 ```
 sudo apt-get update
@@ -25,3 +25,6 @@ sudo ./setup.sh
 cd vault*
 sudo npm start
 ```
+
+# References
+* [AdonisJS 4 docs](https://legacy.adonisjs.com/docs/4.1/installation)
