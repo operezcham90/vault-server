@@ -14,7 +14,7 @@ const req = {
         req.text += '[' + name + ']\n'
     },
     property: (name, value) => {
-        req.text += name + ' = ' + value
+        req.text += name + ' = ' + value + '\n'
     },
     build: () => {
         req.erase()
