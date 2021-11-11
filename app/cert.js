@@ -36,7 +36,6 @@ const req = {
         req.property('prompt', 'no')
         req.section('req_distinguished_name')
         req.property('C', 'MX')
-        req.property('S', 'San Luis Potosi')
         req.property('L', 'San Luis Potosi')
         req.property('O', 'Home')
         req.property('OU', 'Storage')
