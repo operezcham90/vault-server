@@ -51,7 +51,7 @@ const req = {
     write: async () => {
         ip.build()
         req.build()
-        const err = await fs.promises.writeFile('~/vault/domain.req', req.text)
+        const err = await fs.promises.writeFile(os.homedir() + '/vault/domain.req', req.text)
         if (err) {
             console.error(err)
         }
@@ -66,10 +66,10 @@ const cert = {
         '-nodes',
         '-x509',
         '-days', '365',
-        '-keyout', '~/vault/domain.key',
-        '-out', '~/vault/domain.cer',
+        '-keyout', os.homedir() + '/vault/domain.key',
+        '-out', os.homedir() + '/vault/domain.cer',
         '-sha256',
-        '-config', '~/vault/domain.req'
+        '-config', os.homedir() + '/vault/domain.req'
     ],
     value: {
         key: '',
@@ -79,9 +79,8 @@ const cert = {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
         console.log(res)
-        console.log(os.homedir())
-        cert.value.cert = await fs.promises.readFile('~/vault/domain.cer')
-        cert.value.key = await fs.promises.readFile('~/vault/domain.key')
+        cert.value.cert = await fs.promises.readFile(os.homedir() + '/vault/domain.cer')
+        cert.value.key = await fs.promises.readFile(os.homedir() + '/vault/domain.key')
     }
 }
 
