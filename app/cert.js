@@ -69,7 +69,7 @@ const cert = {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
         console.log(res)
-        cert.value.cert = await fs.promises.readFile('./domain.cert')
+        cert.value.cert = await fs.promises.readFile('./domain.crt')
         cert.value.key = await fs.promises.readFile('./domain.key')
     }
 }
