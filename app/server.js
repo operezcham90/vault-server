@@ -7,7 +7,7 @@ const start = async () => {
         res.writeHead(200)
         res.end('hello world\n')
         console.log('hello world\n')
-    }).listen(80)
+    }).listen(443)
 }
 
 start()
