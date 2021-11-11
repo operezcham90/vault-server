@@ -81,9 +81,9 @@ const cert = {
     run: async () => {
         await req.write()
         const res = await util.promisify(cp.execFile)(cert.command, cert.arguments)
+        console.log(res)
         cert.value.cert = fs.readFileSync('crt')
         cert.value.key = fs.readFileSync('key')
-        console.log(cert);
     }
 }
 
