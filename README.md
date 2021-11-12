@@ -19,11 +19,6 @@ wget https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
-* Run server
-```
-cd vault*
-sudo npm start
-```
 
 # References
 * [AdonisJS 4 docs](https://legacy.adonisjs.com/docs/4.1/installation)
