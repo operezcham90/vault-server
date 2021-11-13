@@ -18,7 +18,6 @@ printf "DB_DATABASE=adonis\n" >> .env
 printf "NODE_ENV=development\n" >> .env
 printf "DB_CONNECTION=sqlite\n" >> .env
 printf "SESSION_DRIVER=cookie\n" >> .env
-printf "APP_URL=http://${HOST}:${PORT}" >> .env
 printf "APP_KEY=" >> .env
 uuidgen -r >> .env
 printf "\n" >> .env
