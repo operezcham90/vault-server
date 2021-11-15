@@ -4,7 +4,7 @@ cd /home/server
 apt -y update
 apt -y install git
 apt -y install npm
-apt -y install postgresql
+apt -y install sqlite3
 git clone https://github.com/operezcham90/vault-server.git .
 npm install
 printf "PORT=80\n" >> .env
