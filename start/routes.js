@@ -18,6 +18,6 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
-Route.on('/user').get(() => {
+Route.get('/user', () => {
     return require("os").userInfo().username
 })
