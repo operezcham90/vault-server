@@ -22,7 +22,7 @@ printf "APP_KEY=" >> .env
 uuidgen -r >> .env
 printf "HOST=" >> .env
 ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/' >> .env
-su -u postgres createdb adonis
-su -u postgres psql -c "ALTER USER postgres PASSWORD 'root';"
+sudo -u postgres createdb adonis
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'root';"
 node ace.js migration:run --force
 npm start
