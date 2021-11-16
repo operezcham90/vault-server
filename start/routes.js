@@ -17,3 +17,7 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.on('/user').get(() => {
+    return require("os").userInfo().username
+})
