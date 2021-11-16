@@ -4,7 +4,8 @@
     "adonis-version": "4.1.0",
     "scripts": {
         "start": "node server.js",
-        "test": "node ace.js test"
+        "test": "node ace.js test",
+        "migrate": "node ace.js migration:run --force"
     },
     "engines": {
         "node": "10.x"
