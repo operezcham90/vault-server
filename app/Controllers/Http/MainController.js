@@ -2,7 +2,7 @@
 
 class MainController {
     async root({ view }) {
-        return view.render('root')
+        return { alive: true }
     }
 }
 

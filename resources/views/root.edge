@@ -5,57 +5,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
-  <link rel="stylesheet" href="bootstrap.min.css">
-  <title>📦 Home Vault 📦</title>
+  <title>Document</title>
 </head>
 
-<body onload="start()">
-  <h1 class="d-none">📦 Home Vault 📦</h1>
-  <nav class="navbar navbar-dark bg-dark mb-2">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0">📦 Home Vault 📦</span>
-    </div>
-  </nav>
-  <div class="container-fluid">
-    <input type="file" id="file" class="d-none" multiple onchange="preview(this)">
-    <input type="button" class="btn btn-outline-dark" value="Search files 📂"
-      onclick="document.getElementById('file').click()">
-    <textarea class="form-control" id="output" disabled></textarea>
-  </div>
-  <script>
-    let ext = null
-    const output = (text) => {
-      const o = document.getElementById('output')
-      o.innerHTML += text
-      o.innerHTML += `
-      `
-      o.scrollTop = o.scrollHeight
-    }
-    const get = async (src) => {
-      try {
-        const response = await fetch(src)
-        return response.json()
-      } catch (error) {
-        output('🌐 Network error');
-        return {}
-      }
-    }
-    const start = async () => {
-      ext = await get('extensions.json')
-    }
-    const preview = (input) => {
-      output('🧮 ' + input.files.length)
-      for (var i = 0; i < input.files.length; i++) {
-        output('📁 ' + input.files[i].name);
-        const e = input.files[i].name.split('.').pop()
-        const d = ext[e].descriptions
-        for (var j = 0; j < d.length; j++) {
-          output('📢 ' + d[j]);
-        }
-      }
-    }
-  </script>
+<body>
+
 </body>
 
 </html>
