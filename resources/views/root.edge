@@ -18,7 +18,7 @@
     </div>
   </nav>
   <div class="container-fluid">
-    <input type="file" id="file" class="d-none" onclick="preview()">
+    <input type="file" id="file" class="d-none" onclick="preview(this)">
     <input type="button" class="btn btn-outline-dark" value="Search 📂"
       onclick="document.getElementById('file').click()">
   </div>
@@ -26,9 +26,11 @@
     const start = () => {
       console.log('✅')
     }
-    const preview = () => {
+    const preview = (input) => {
       console.log('✅')
-      console.log(document.getElementById('file').value)
+      for (var i = 0; i < input.files.length; i++) {
+        console.log('📁' + input.files[i].name);
+      }
     }
   </script>
 </body>
