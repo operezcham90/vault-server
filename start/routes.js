@@ -16,8 +16,4 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
-
-Route.get('/user', () => {
-    return require("os").userInfo().username
-})
+Route.get('/', 'MainController.root')
