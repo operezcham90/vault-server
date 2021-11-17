@@ -24,21 +24,33 @@
     <textarea class="form-control" id="output" disabled></textarea>
   </div>
   <script>
+    let ext = null;
     const output = (text) => {
-      document.getElementById('output').innerHTML += text + 'newline'
+      const o = document.getElementById('output')
+      o.innerHTML += (text + '\n')
+      o.scrollTop = o.scrollHeight
+    }
+    const get = async (src) => {
+      try {
+        const response = await fetch(src)
+        return response.json()
+      } catch (error) {
+        output('🌐 fetch error');
+        return ''
+      }
     }
     const start = async () => {
-      try {
-        const response = await fetch('extensions.json')
-        output(response.json())
-      } catch (error) {
-        output('🌐 fetch');
-      }
+      ext = await get('extensions.json')
     }
     const preview = (input) => {
       output('🧮 ' + input.files.length)
       for (var i = 0; i < input.files.length; i++) {
         output('📁 ' + input.files[i].name);
+        const e = input.files[i].name.split('.').pop()
+        const d = ext[e].descriptions
+        for (var j = 0; j < d.length; j++) {
+          output('📢 ' + d[j]);
+        }
       }
     }
   </script>
