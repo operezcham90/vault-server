@@ -27,7 +27,7 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <input type="file" id="file" class="d-none" multiple onchange="list(this)">
+        <input type="file" id="file" class="d-none" multiple onchange="read(this)">
         <input type="button" class="btn btn-outline-dark" value="Search files 📂"
             onclick="document.getElementById('file').click()">
         <div class="row mt-2">
@@ -56,7 +56,7 @@
         const start = async () => {
             ext = await get('extensions.json')
         }
-        const list = (input) => {
+        const read = (input) => {
             console.log('🧮 ' + input.files.length + ' files')
             const l = documen.getElementById('list')
             for (var i = 0; i < input.files.length; i++) {
