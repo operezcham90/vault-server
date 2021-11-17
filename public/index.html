@@ -12,7 +12,7 @@
 
 <body onload="start()">
     <template id="item">
-        <div class="card">
+        <div class="card col-3">
             <div class="card-body">
                 <h5 class="card-title">{name}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{size}</h6>
@@ -59,8 +59,8 @@
         const read = (input) => {
             console.log('🧮 ' + input.files.length + ' files')
             const l = document.getElementById('list')
+            l.innerHTML = ''
             for (var i = 0; i < input.files.length; i++) {
-                l.innerHTML = ''
                 console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
                 const d = ext[e.toUpperCase()].descriptions
