@@ -12,7 +12,7 @@
 
 <body onload="start()">
   <h1 class="d-none">📦 Home Vault 📦</h1>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark mb-2">
     <div class="container-fluid">
       <span class="navbar-brand mb-0">📦 Home Vault 📦</span>
     </div>
@@ -21,15 +21,24 @@
     <input type="file" id="file" class="d-none" multiple onchange="preview(this)">
     <input type="button" class="btn btn-outline-dark" value="Search 📂"
       onclick="document.getElementById('file').click()">
+    <textarea class="form-control" id="output" disabled></textarea>
   </div>
   <script>
-    const start = () => {
-      console.log('✅' + Date.now())
+    const output = (text) => {
+      document.getElementById('output').innerHTML += text + '\n'
+    }
+    const start = async () => {
+      try {
+        const response = await fetch('extensions.json')
+        output(response.json())
+      } catch (error) {
+        output('🌐 fetch');
+      }
     }
     const preview = (input) => {
-      console.log('🧮' + input.files.length)
+      output('🧮 ' + input.files.length)
       for (var i = 0; i < input.files.length; i++) {
-        console.log('📁' + input.files[i].name);
+        output('📁 ' + input.files[i].name);
       }
     }
   </script>
