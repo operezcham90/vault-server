@@ -24,10 +24,10 @@
   </div>
   <script>
     const start = () => {
-      console.log('✅')
+      console.log('✅' + Date.now())
     }
     const preview = (input) => {
-      console.log('✅')
+      console.log('🧮' + input.files.length)
       for (var i = 0; i < input.files.length; i++) {
         console.log('📁' + input.files[i].name);
       }
