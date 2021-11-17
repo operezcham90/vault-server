@@ -60,6 +60,7 @@
             console.log('🧮 ' + input.files.length + ' files')
             const l = documen.getElementById('list')
             for (var i = 0; i < input.files.length; i++) {
+                l.innerHTML = ''
                 console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
                 const d = ext[e.toUpperCase()].descriptions
