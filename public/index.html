@@ -11,6 +11,15 @@
 </head>
 
 <body onload="start()">
+    <template id="item">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{name}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{size}</h6>
+                {info}
+            </div>
+        </div>
+    </template>
     <h1 class="d-none">📦 Home Vault 📦</h1>
     <nav class="navbar navbar-dark bg-dark mb-2">
         <div class="container-fluid">
@@ -18,40 +27,48 @@
         </div>
     </nav>
     <div class="container-fluid">
-        <input type="file" id="file" class="d-none" multiple onchange="preview(this)">
+        <input type="file" id="file" class="d-none" multiple onchange="list(this)">
         <input type="button" class="btn btn-outline-dark" value="Search files 📂"
             onclick="document.getElementById('file').click()">
-        <textarea class="form-control" id="output" disabled></textarea>
+        <div class="row mt-2">
+            <div class="col">
+                🎒 List of files
+                <div class="row" id="list">
+                </div>
+            </div>
+            <div class="col">
+                👁 Preview
+            </div>
+        </div>
     </div>
     <script>
         let ext = null
-        const output = (text) => {
-            const o = document.getElementById('output')
-            o.innerHTML += text
-            o.innerHTML += '\n'
-            o.scrollTop = o.scrollHeight
-        }
+        let item = document.getElementById('item').innerHTML
         const get = async (src) => {
             try {
                 const response = await fetch(src)
                 return response.json()
             } catch (error) {
-                output('🌐 Network error');
+                console.error('🌐 Network error')
                 return {}
             }
         }
         const start = async () => {
             ext = await get('extensions.json')
         }
-        const preview = (input) => {
-            output('🧮 ' + input.files.length)
+        const list = (input) => {
+            console.log('🧮 ' + input.files.length + ' files')
+            const l = documen.getElementById('list')
             for (var i = 0; i < input.files.length; i++) {
-                output('📁 ' + input.files[i].name);
+                console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
                 const d = ext[e.toUpperCase()].descriptions
+                let info = ''
                 for (var j = 0; j < d.length; j++) {
-                    output('📢 ' + d[j]);
+                    console.log('📖 ' + d[j])
+                    info += d[j] + '</br>'
                 }
+                l.innerHTML += item.replace('{name}', input.files[i].name).replace('{size}', input.files[i].size).replace('{info}', info)
             }
         }
     </script>
