@@ -19,15 +19,17 @@
   </nav>
   <div class="container-fluid">
     <input type="file" id="file" class="d-none" multiple onchange="preview(this)">
-    <input type="button" class="btn btn-outline-dark" value="Search 📂"
+    <input type="button" class="btn btn-outline-dark" value="Search files 📂"
       onclick="document.getElementById('file').click()">
     <textarea class="form-control" id="output" disabled></textarea>
   </div>
   <script>
-    let ext = null;
+    let ext = null
     const output = (text) => {
       const o = document.getElementById('output')
-      o.innerHTML += (text + '\n')
+      o.innerHTML += text
+      o.innerHTML += `
+      `
       o.scrollTop = o.scrollHeight
     }
     const get = async (src) => {
@@ -35,8 +37,8 @@
         const response = await fetch(src)
         return response.json()
       } catch (error) {
-        output('🌐 fetch error');
-        return ''
+        output('🌐 Network error');
+        return {}
       }
     }
     const start = async () => {
