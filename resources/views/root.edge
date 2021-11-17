@@ -5,26 +5,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
   <link rel="stylesheet" href="bootstrap.min.css">
   <title>📦 Home Vault 📦</title>
 </head>
 
 <body onload="start()">
   <h1 class="d-none">📦 Home Vault 📦</h1>
-  <nav class="navbar navbar-light bg-light">
+  <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
       <span class="navbar-brand mb-0">📦 Home Vault 📦</span>
     </div>
   </nav>
-  <input type="file" id="file" class="d-none" onclick="preview()">
-  <input type="button" value="Search 📂" onclick="document.getElementById('file').click()">
+  <div class="container-fluid">
+    <input type="file" id="file" class="d-none" onclick="preview()">
+    <input type="button" class="btn btn-outline-dark" value="Search 📂"
+      onclick="document.getElementById('file').click()">
+  </div>
   <script>
     const start = () => {
-      console.log('👍')
+      console.log('✅')
     }
     const preview = () => {
-      console.log('🖼')
+      console.log('✅')
     }
   </script>
 </body>
