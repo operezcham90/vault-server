@@ -14,11 +14,24 @@
     <template id="item">
         <div class="card mt-1">
             <div class="card-body">
-                <label>📁 Name</label>
-                <input class="form-control" type="text" value="{name}" readonly>
-                <label>⚖ Size</label>
-                <input class="form-control" type="text" value="{size}" readonly>
-                {info}
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">📁 Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" value="{name}">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">⚖ Size</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" value="{size}">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">🏷 Extension</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" value="{info}">
+                    </div>
+                </div>
             </div>
         </div>
     </template>
@@ -30,7 +43,7 @@
     </nav>
     <div class="container-fluid">
         <input type="file" id="file" class="d-none" multiple onchange="read(this)">
-        <input type="button" class="btn btn-outline-dark" value="Search files 📂" onclick="search()">
+        <input type="button" class="btn btn-outline-dark w-100" value="Search files 📂" onclick="search()">
         <div class="row mt-2">
             <div class="col-8">
                 <h5>🎒 List of files</h5>
