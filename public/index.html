@@ -12,22 +12,22 @@
 
 <body onload="start()" class="h-100">
     <template id="item">
-        <div class="card mt-1">
+        <div class="card mb-1">
             <div class="card-body">
                 <div class="row">
-                    <label class="col-sm-2 col-form-label">📁 Name</label>
+                    <label class="col-sm-2 col-form-label text-right">📁 Name</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{name}">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-2 col-form-label">⚖ Size</label>
+                    <label class="col-sm-2 col-form-label text-right">⚖ Size</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{size}">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-2 col-form-label">🏷 Extension</label>
+                    <label class="col-sm-2 col-form-label text-right">🏷 Extension</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{info}">
                     </div>
@@ -41,11 +41,11 @@
             <span class="navbar-brand mb-0">📦 Home Vault 📦</span>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid h-75">
         <input type="file" id="file" class="d-none" multiple onchange="read(this)">
         <input type="button" class="btn btn-outline-dark w-100" value="Search files 📂" onclick="search()">
-        <div class="row mt-2">
-            <div class="col-8 mt-2 overflow-auto" id="list">
+        <div class="row mt-2 h-100">
+            <div class="col-8 mt-2 overflow-auto h-100" id="list">
             </div>
             <div class="col-4">
                 <h5>👁 Preview</h5>
