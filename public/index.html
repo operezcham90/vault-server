@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
@@ -10,23 +10,23 @@
     <title>📦 Home Vault 📦</title>
 </head>
 
-<body onload="start()">
+<body onload="start()" class="h-100">
     <template id="item">
         <div class="card mt-1">
             <div class="card-body">
-                <div class="mb-3 row">
+                <div class="row">
                     <label class="col-sm-2 col-form-label">📁 Name</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{name}">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label class="col-sm-2 col-form-label">⚖ Size</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{size}">
                     </div>
                 </div>
-                <div class="mb-3 row">
+                <div class="row">
                     <label class="col-sm-2 col-form-label">🏷 Extension</label>
                     <div class="col-sm-10">
                         <input type="text" readonly class="form-control" value="{info}">
@@ -45,10 +45,7 @@
         <input type="file" id="file" class="d-none" multiple onchange="read(this)">
         <input type="button" class="btn btn-outline-dark w-100" value="Search files 📂" onclick="search()">
         <div class="row mt-2">
-            <div class="col-8">
-                <h5>🎒 List of files</h5>
-                <div class="mt-2" id="list">
-                </div>
+            <div class="col-8 mt-2 overflow-auto" id="list">
             </div>
             <div class="col-4">
                 <h5>👁 Preview</h5>
@@ -82,7 +79,7 @@
                 console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
                 let d = ['Unknown file extension'];
-                if (ext[e]) {
+                if (ext[e].toUpperCase()) {
                     d = ext[e.toUpperCase()].descriptions
                 }
                 l.innerHTML += item
