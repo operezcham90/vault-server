@@ -14,8 +14,10 @@
     <template id="item">
         <div class="card mt-1">
             <div class="card-body">
-                <h5 class="card-title">{name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{size} bytes</h6>
+                <label>📁 Name</label>
+                <input class="form-control" type="text" value="{name}" readonly>
+                <label>⚖ Size</label>
+                <input class="form-control" type="text" value="{size}" readonly>
                 {info}
             </div>
         </div>
@@ -28,16 +30,15 @@
     </nav>
     <div class="container-fluid">
         <input type="file" id="file" class="d-none" multiple onchange="read(this)">
-        <input type="button" class="btn btn-outline-dark" value="Search files 📂"
-            onclick="document.getElementById('file').click()">
+        <input type="button" class="btn btn-outline-dark" value="Search files 📂" onclick="search()">
         <div class="row mt-2">
             <div class="col-8">
-                🎒 List of files
+                <h5>🎒 List of files</h5>
                 <div class="mt-2" id="list">
                 </div>
             </div>
             <div class="col-4">
-                👁 Preview
+                <h5>👁 Preview</h5>
             </div>
         </div>
     </div>
@@ -54,6 +55,9 @@
                 return {}
             }
         }
+        const search = () => {
+            document.getElementById('file').click()
+        }
         const start = async () => {
             ext = await get('extensions.json')
         }
@@ -64,7 +68,10 @@
             for (var i = 0; i < input.files.length; i++) {
                 console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
-                const d = ext[e.toUpperCase()].descriptions
+                let d = ['Unknown file extension'];
+                if (ext[e]) {
+                    d = ext[e.toUpperCase()].descriptions
+                }
                 l.innerHTML += item
                     .replace('{name}', input.files[i].name)
                     .replace('{size}', nf.format(input.files[i].size))
