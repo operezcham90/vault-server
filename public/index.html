@@ -12,10 +12,10 @@
 
 <body onload="start()">
     <template id="item">
-        <div class="card col-3">
+        <div class="card mt-1">
             <div class="card-body">
                 <h5 class="card-title">{name}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{size}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">{size} bytes</h6>
                 {info}
             </div>
         </div>
@@ -31,12 +31,12 @@
         <input type="button" class="btn btn-outline-dark" value="Search files 📂"
             onclick="document.getElementById('file').click()">
         <div class="row mt-2">
-            <div class="col">
+            <div class="col-8">
                 🎒 List of files
-                <div class="row" id="list">
+                <div class="mt-2" id="list">
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 👁 Preview
             </div>
         </div>
@@ -44,6 +44,7 @@
     <script>
         let ext = null
         let item = document.getElementById('item').innerHTML
+        const nf = new Intl.NumberFormat('en-US');
         const get = async (src) => {
             try {
                 const response = await fetch(src)
@@ -64,12 +65,10 @@
                 console.log('📁 ' + input.files[i].name)
                 const e = input.files[i].name.split('.').pop()
                 const d = ext[e.toUpperCase()].descriptions
-                let info = ''
-                for (var j = 0; j < d.length; j++) {
-                    console.log('📖 ' + d[j])
-                    info += d[j] + '</br>'
-                }
-                l.innerHTML += item.replace('{name}', input.files[i].name).replace('{size}', input.files[i].size).replace('{info}', info)
+                l.innerHTML += item
+                    .replace('{name}', input.files[i].name)
+                    .replace('{size}', nf.format(input.files[i].size))
+                    .replace('{info}', d.join(', '))
             }
         }
     </script>
