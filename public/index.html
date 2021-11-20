@@ -59,7 +59,7 @@
         }
         const start = async () => {
             try {
-                document.getElementById('extensions').value = await fetch('extensions.json').text()
+                document.getElementById('ext').value = await fetch('ext.json').text()
             } catch (error) {
                 console.error('🌐 Network error')
             }
@@ -67,7 +67,7 @@
         const read = (input) => {
             const list = document.getElementById('list')
             const item = document.getElementById('item').innerHTML
-            const ext = JSON.stringify(document.getElementById('extensions').value)
+            const ext = JSON.stringify(document.getElementById('ext').value)
             list.innerHTML = ''
             for (var i = 0; i < input.files.length; i++) {
                 let info = ['Unknown file extension'];
