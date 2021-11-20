@@ -2,8 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="64x64" href="favicon.png">
     <link rel="stylesheet" href="bootstrap.min.css">
@@ -11,6 +10,7 @@
 </head>
 
 <body onload="start()" class="h-100">
+    <input type="hidden" id="ext">
     <template id="item">
         <div class="card mb-1">
             <div class="card-body">
@@ -53,36 +53,28 @@
         </div>
     </div>
     <script>
-        let ext = null
-        let item = document.getElementById('item').innerHTML
-        const nf = new Intl.NumberFormat('en-US');
-        const get = async (src) => {
-            try {
-                const response = await fetch(src)
-                return response.json()
-            } catch (error) {
-                console.error('🌐 Network error')
-                return {}
-            }
-        }
+        let nf = new Intl.NumberFormat('en-US');
         const search = () => {
             document.getElementById('file').click()
         }
         const start = async () => {
-            ext = await get('extensions.json')
+            try {
+                document.getElementById('extensions').value = await fetch('extensions.json').text()
+            } catch (error) {
+                console.error('🌐 Network error')
+            }
         }
         const read = (input) => {
-            console.log('🧮 ' + input.files.length + ' files')
-            const l = document.getElementById('list')
-            l.innerHTML = ''
+            const list = document.getElementById('list')
+            const item = document.getElementById('item').innerHTML
+            const ext = JSON.stringify(document.getElementById('extensions').value)
+            list.innerHTML = ''
             for (var i = 0; i < input.files.length; i++) {
-                console.log('📁 ' + input.files[i].name)
-                const e = input.files[i].name.split('.').pop()
-                let d = ['Unknown file extension'];
-                if (ext[e.toUpperCase()]) {
-                    d = ext[e.toUpperCase()].descriptions
+                let info = ['Unknown file extension'];
+                if (ext[input.files[i].type]) {
+                    info = ext[input.files[i].type].descriptions
                 }
-                l.innerHTML += item
+                list.innerHTML += item
                     .replace('{name}', input.files[i].name)
                     .replace('{size}', nf.format(input.files[i].size))
                     .replace('{info}', d.join(', '))
