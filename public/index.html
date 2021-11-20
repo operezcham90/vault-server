@@ -53,13 +53,13 @@
         </div>
     </div>
     <script>
-        let nf = new Intl.NumberFormat('en-US');
         const search = () => {
             document.getElementById('file').click()
         }
         const start = async () => {
             try {
-                document.getElementById('ext').value = await fetch('ext.json').text()
+                const res = await fetch('ext.json')
+                document.getElementById('ext').value = res.text()
             } catch (error) {
                 console.error('🌐 Network error')
             }
@@ -68,6 +68,7 @@
             const list = document.getElementById('list')
             const item = document.getElementById('item').innerHTML
             const ext = JSON.stringify(document.getElementById('ext').value)
+            const nf = new Intl.NumberFormat('en-US')
             list.innerHTML = ''
             for (var i = 0; i < input.files.length; i++) {
                 let info = ['Unknown file extension'];
