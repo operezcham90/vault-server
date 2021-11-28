@@ -17,6 +17,8 @@ npm install
 # get random secret
 printf "APP_KEY=" >> .env
 uuidgen -r >> .env
+echo "HOST=0.0.0.0" >> .env
+echo "PORT=80" >> .env
 
 # set local database
 sudo -u postgres createdb vault
