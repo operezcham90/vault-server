@@ -26,9 +26,10 @@ sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'pass';"
 node ace.js migration:run
 
 # set daemon process
-npm install pm2 -g
-pm2 start server.js
-pm2 save
+#npm install pm2 -g
+#pm2 start server.js
+#pm2 startup
+#pm2 save
 
 # end notes
 echo "vault-server installed."
