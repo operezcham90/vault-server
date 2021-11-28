@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "adonis-version": "4.1.0",
     "scripts": {
+        "prestart": "node ace.js migration:run",
         "start": "node server.js",
         "test": "node ace.js test"
     },

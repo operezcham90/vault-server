@@ -1,28 +1,28 @@
 #!/bin/bash
 mkdir /home/server
 cd /home/server
-apt -y update
-apt -y install git
-apt -y install npm
-apt -y install postgresql
-git clone https://github.com/operezcham90/vault-server.git .
-npm install
-printf "PORT=80\n" >> .env
-printf "DB_PORT=5432\n" >> .env
-printf "DB_USER=postgres\n" >> .env
-printf "DB_PASSWORD=root\n" >> .env
-printf "DB_CONNECTION=pg\n" >> .env
-printf "CACHE_VIEWS=false\n" >> .env
-printf "DB_HOST=127.0.0.1\n" >> .env
-printf "HASH_DRIVER=bcrypt\n" >> .env
-printf "DB_DATABASE=adonis\n" >> .env
-printf "NODE_ENV=development\n" >> .env
-printf "SESSION_DRIVER=cookie\n" >> .env
 printf "APP_KEY=" >> .env
 uuidgen -r >> .env
 printf "HOST=" >> .env
-ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/' >> .env
+hostname -I >> .env
+echo "* Environment ready."
+
+apt -y update
+echo "* Packages updated."
+
+apt -y install git
+git clone https://github.com/operezcham90/vault-server.git .
+cat resources/env >> .env
+echo "* Git installed."
+
+apt -y install postgresql
 sudo -u postgres createdb adonis
-sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'root';"
-node ace.js migration:run --force
-npm start
+echo "* PostgreSQL installed."
+
+apt -y install npm
+npm install
+printf "#!/bin/bash" >> /usr/local/bin/vault
+printf "npm --prefix /home/server start" >> /usr/local/bin/vault
+chmod +x /usr/local/bin/vault
+echo "* npm installed."
+echo "Type vault to start."
