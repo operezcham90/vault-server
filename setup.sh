@@ -1,28 +1,33 @@
 #!/bin/bash
-mkdir /home/server
-cd /home/server
-echo "* Folder ready."
 
+# install basic software
 apt -y update
-echo "* Packages updated."
-
 apt -y install git
+apt -y install npm
+apt -y install postgresql
+
+# set main folder
+mkdir /home/serv
+cd /home/serv
+
+# get source code
 git clone https://github.com/operezcham90/vault-server.git .
+npm install
+
+# get random secret
 printf "APP_KEY=" >> .env
 uuidgen -r >> .env
-printf "HOST=" >> .env
-hostname -I >> .env
-cat resources/env >> .env
-echo "* Git installed."
 
-apt -y install postgresql
-sudo -u postgres createdb adonis
-echo "* PostgreSQL installed."
+# set local database
+sudo -u postgres createdb vault
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'pass';"
+node ace.js migration:run
 
-apt -y install npm
-npm install
-printf "#!/bin/bash\n" >> /usr/local/bin/vault
-printf "npm --prefix /home/server start" >> /usr/local/bin/vault
-chmod +x /usr/local/bin/vault
-echo "* npm installed."
-echo "Type vault to start."
+# set daemon process
+pm2 start /home/serv/server.js
+pm2 save
+
+# end notes
+echo "vault-server installed."
+echo "Current IP address:"
+hostname -I
