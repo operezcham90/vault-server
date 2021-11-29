@@ -2,6 +2,7 @@
     "name": "vault-server",
     "version": "1.0.0",
     "adonis-version": "4.1.0",
+    "license": "UNLICENSED",
     "scripts": {
         "prestart": "node ace.js migration:run",
         "start": "node server.js",
@@ -9,6 +10,10 @@
     },
     "engines": {
         "node": "10.x"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/operezcham90/vault-server.git"
     },
     "dependencies": {
         "@adonisjs/ace": "^5.0.8",

@@ -28,8 +28,8 @@ node ace.js migration:run
 # set daemon process
 npm install pm2 -g
 pm2 start server.js
-pm2 startup
 pm2 save
+pm2 startup
 
 # end notes
 echo "vault-server installed."
