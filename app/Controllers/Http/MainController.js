@@ -1,7 +1,7 @@
 'use strict'
 
 class MainController {
-    alive() {
+    default() {
         return {
             alive: true,
             well: 'yes'

@@ -2,4 +2,4 @@
 
 const Route = use('Route')
 
-Route.get('*', 'MainController.alive')
+Route.get('*', 'MainController.default')
