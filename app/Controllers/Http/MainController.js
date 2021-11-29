@@ -2,7 +2,7 @@
 
 class MainController {
     async alive({ view }) {
-        return { alive: true }
+        return { alive: true, well: 'yes' }
     }
 }
 
