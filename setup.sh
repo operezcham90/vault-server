@@ -29,6 +29,7 @@ node ace.js migration:run
 # set daemon process
 npm install pm2 -g
 pm2 start server.js
+pm2 restart server.js
 pm2 save
 pm2 startup
 
