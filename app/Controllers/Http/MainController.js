@@ -4,7 +4,7 @@ class MainController {
     async root() {
         return {
             alive: true,
-            well: 'yes'
+            well: 'no'
         }
     }
 }

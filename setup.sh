@@ -7,6 +7,7 @@ apt -y install npm
 apt -y install postgresql
 
 # set main folder
+rm -R /home/serv
 mkdir /home/serv
 cd /home/serv
 
