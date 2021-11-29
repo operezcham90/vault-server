@@ -1,7 +1,7 @@
 'use strict'
 
 class MainController {
-    default() {
+    async root() {
         return {
             alive: true,
             well: 'yes'
