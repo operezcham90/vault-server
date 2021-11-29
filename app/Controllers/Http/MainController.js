@@ -1,8 +1,11 @@
 'use strict'
 
 class MainController {
-    async alive({ view }) {
-        return { alive: true, well: 'yes' }
+    alive() {
+        return {
+            alive: true,
+            well: 'yes'
+        }
     }
 }
 
