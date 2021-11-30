@@ -9,7 +9,8 @@ class MainController {
         }
     }
     async icon({ response }) {
-        response.status(204)
+        response.safeHeader('Content-type', 'image/x-icon')
+        return await fs.promises.readFile('./resources/favicon.ico')
     }
 }
 
