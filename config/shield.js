@@ -2,15 +2,11 @@
 
 module.exports = {
   csp: {
-    enabled: true,
     directives: {
-      imgSrc: ['self']
+      defaultSrc: ['self']
     },
-
     reportOnly: false,
-
     setAllHeaders: false,
-
     disableAndroid: true
   },
 
