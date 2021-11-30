@@ -2,10 +2,9 @@
 
 module.exports = {
   csp: {
-    enabled: true,
-
     directives: {
-      imgSrc: ['*', 'data:']
+      defaultSrc: ['self'],
+      imgSrc: ['*']
     },
 
     reportOnly: false,
