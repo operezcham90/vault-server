@@ -1,5 +1,5 @@
 # Vault Server
-A local storage server to organize home files 🏠
+A local storage server to organize home files 📦
 
 ## Requirements
 * A computer 💻
