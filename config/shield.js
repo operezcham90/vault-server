@@ -2,6 +2,7 @@
 
 module.exports = {
   csp: {
+    enabled: true,
     directives: {
       imgSrc: ['self']
     },
