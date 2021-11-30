@@ -31,8 +31,8 @@ module.exports = {
     methods: ['POST', 'PUT', 'DELETE'],
     filterUris: [],
     cookieOptions: {
-      httpOnly: false,
-      sameSite: false,
+      httpOnly: true,
+      sameSite: true,
       path: '/',
       maxAge: 7200
     }
