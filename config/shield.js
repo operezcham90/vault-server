@@ -3,9 +3,9 @@
 module.exports = {
   csp: {
     enabled: true,
-    
+
     directives: {
-      defaultSrc: ['self']
+      imgSrc: ['self']
     },
 
     reportOnly: false,
