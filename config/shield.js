@@ -3,7 +3,7 @@
 module.exports = {
   csp: {
     directives: {
-      defaultSrc: ['*', '@nonce']
+      defaultSrc: ['@nonce']
     },
 
     reportOnly: false,
