@@ -5,7 +5,7 @@ module.exports = {
     enabled: true,
 
     directives: {
-      imgSrc: ['http:', 'data:']
+      imgSrc: ['*', 'data:']
     },
 
     reportOnly: false,
