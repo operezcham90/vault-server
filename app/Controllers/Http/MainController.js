@@ -1,11 +1,9 @@
 'use strict'
 
 class MainController {
-    async root() {
+    async alive() {
         return {
-            alive: true,
-            well: 'no',
-            fine: '👍'
+            alive: true
         }
     }
 }
