@@ -1,12 +1,12 @@
-# Introduction
+# Vault Server
 A local storage server to organize home files 🏠
 
-# Requirements
+## Requirements
 * A computer 💻
 * An external hard drive 💿
 * A local area network 🌐
 
-# Installation
+## Installation
 * Install [Ubuntu 20.04 LTS](https://releases.ubuntu.com/20.04/)
 * Install [SSH](https://www.openssh.com/) (optional)
 ```
@@ -20,5 +20,5 @@ chmod +x setup.sh
 sudo ./setup.sh
 ```
 
-# References
+## References
 * [AdonisJS 4 docs](https://legacy.adonisjs.com/docs/4.1/installation)
