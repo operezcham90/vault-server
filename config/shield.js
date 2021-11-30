@@ -5,7 +5,7 @@ module.exports = {
     enabled: true,
 
     directives: {
-      imgSrc: ['self']
+      imgSrc: ['self', 'http://192.168.0.25/favicon.ico']
     },
 
     reportOnly: false,
