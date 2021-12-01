@@ -5,7 +5,6 @@ apt -y update
 apt -y install git
 apt -y install npm
 apt -y install postgresql
-apt -y install toilet
 
 # main folder
 rm -R /home/serv
@@ -35,7 +34,7 @@ pm2 save
 pm2 startup
 
 # end notes
-toilet -kf script "Vault Server"
+cat /home/serv/title.txt
 echo "Vault Server installed."
 echo "Main folder: /home/serv"
 echo "Current IP address:"
