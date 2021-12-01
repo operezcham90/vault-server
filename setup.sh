@@ -5,7 +5,7 @@ apt -y update
 apt -y install git
 apt -y install npm
 apt -y install postgresql
-apt -y intalll toilet
+apt -y install toilet
 
 # main folder
 rm -R /home/serv
