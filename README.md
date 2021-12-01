@@ -21,4 +21,5 @@ sudo ./setup.sh
 ```
 
 ## References
-* [AdonisJS 4 docs](https://legacy.adonisjs.com/docs/4.1/installation)
+* [AdonisJs 4.1](https://legacy.adonisjs.com/docs/4.1/installation)
+* [Water.css](https://watercss.kognise.dev/)
