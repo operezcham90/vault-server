@@ -4,7 +4,6 @@ module.exports = {
   csp: {
     directives: {
     },
-    enabled: true,
     reportOnly: false,
     setAllHeaders: false,
     disableAndroid: true
