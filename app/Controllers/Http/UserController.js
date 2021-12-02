@@ -20,10 +20,7 @@ class UserController {
         return null
     }
     async list() {
-        return await User
-            .query()
-            .orderBy('email', 'desc')
-            .limit(20)
+        return await User.all()
     }
 }
 
