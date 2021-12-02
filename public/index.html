@@ -12,7 +12,7 @@
 
 <body onload="api.csrf()">
     <h1>📦 Vault Server 📦</h1>
-    <form action="/login" method="post">
+    <form onsubmit="api.login()" id="login">
         <input type="hidden" name="_csrf">
         <label for="email">Email ✉</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
@@ -20,7 +20,7 @@
         <input type="password" name="password" id="password" placeholder="pa$$word">
         <input type="submit" value="Login 🔒">
     </form>
-    <form action="/signup" method="post">
+    <form onsubmit="api.signup()" id='signup'>
         <input type="hidden" name="_csrf">
         <label for="email">Email ✉</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
@@ -28,7 +28,7 @@
         <input type="password" name="password" id="password" placeholder="pa$$word">
         <input type="submit" value="Signup 🔒">
     </form>
-    <script src="/user.js"></script>
+    <script src="/api.js"></script>
 </body>
 
 </html>
