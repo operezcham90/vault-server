@@ -10,7 +10,7 @@ class MainController {
     }
     async csrf({ request }) {
         return {
-            token: request.csrfToken()
+            token: request.csrfToken
         }
     }
 }
