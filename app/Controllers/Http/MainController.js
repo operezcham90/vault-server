@@ -8,10 +8,6 @@ class MainController {
             alive: true
         }
     }
-    async icon({ response }) {
-        response.safeHeader('Content-type', 'image/x-icon')
-        return await fs.promises.readFile('./resources/favicon.ico')
-    }
 }
 
 module.exports = MainController
