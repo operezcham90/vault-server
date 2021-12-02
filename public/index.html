@@ -13,19 +13,22 @@
 <body>
     <h1>📦 Vault Server 📦</h1>
     <form action="/login" method="post">
-        <label for="email">📧 Email</label>
+        <input type="hidden" name="_csrf">
+        <label for="email">Email ✉</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">🔑 Password</label>
+        <label for="password">Password 🗝</label>
         <input type="password" name="password" id="password" placeholder="pa$$word">
-        <input type="submit" value="🔒 Login">
+        <input type="submit" value="Login 🔒">
     </form>
     <form action="/signup" method="post">
-        <label for="email">📧 Email</label>
+        <input type="hidden" name="_csrf">
+        <label for="email">Email ✉</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">🔑 Password</label>
+        <label for="password">Password 🗝</label>
         <input type="password" name="password" id="password" placeholder="pa$$word">
-        <input type="submit" value="🔒 Signup">
+        <input type="submit" value="Signup 🔒">
     </form>
+    <script src="/user.js"></script>
 </body>
 
 </html>

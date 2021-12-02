@@ -4,11 +4,11 @@ const Env = use('Env')
 const User = use('App/Models/User')
 
 class UserController {
-    async login({ auth, request, response }) {
+    async login({ auth, request }) {
         const { email, password } = request.all()
         return await auth.remember(true).attempt(email, password)
     }
-    async signup({ request, response }) {
+    async signup({ request }) {
         const { email, password, secret } = request.all()
         if (secret === Env.get()) {
             return await User.create({
