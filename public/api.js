@@ -37,7 +37,7 @@ const api = {
                 return {}
             }
         } catch (e) {
-            console.error('HTTP fail')
+            console.error('HTTP fail' + e)
             return {}
         }
     },
