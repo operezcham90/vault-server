@@ -1,7 +1,7 @@
 'use strict'
 
 const Env = use('Env')
-const User = use('App/Model/User')
+const User = use('App/Models/User')
 
 class UserController {
     async login({ auth, request, response }) {
