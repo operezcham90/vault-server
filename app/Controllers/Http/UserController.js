@@ -10,7 +10,7 @@ class UserController {
     }
     async signup({ request }) {
         const { email, password, secret } = request.all()
-        if (secret === Env.get()) {
+        if (secret === Env.get('APP_KEY')) {
             return await User.create({
                 username: email.split('@').unshift(),
                 email: email,
