@@ -7,6 +7,10 @@ const dom = {
     name: (name) => {
         return document.getElementsByName(name)
     },
+    load: async () => {
+        await api.csrf()
+
+    },
     form: (id) => {
         return new FormData(dom.id(id));
     },
@@ -45,11 +49,13 @@ const api = {
         const res = await api.call('/csrf', 'GET')
         dom.val.name('_csrf', res.token)
     },
-    login: async () => {
+    login: async (e) => {
+        e.preventDefault();
         const res = await api.call('/login', 'POST', 'login')
         console.log(res)
     },
-    signup: async () => {
+    signup: async (e) => {
+        e.preventDefault();
         const res = await api.call('/signup', 'POST', 'signup')
         console.log(res)
     }

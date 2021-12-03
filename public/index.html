@@ -7,26 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
-    <title>📦 Vault Server 📦</title>
+    <title>Vault Server 📦</title>
 </head>
 
-<body onload="api.csrf()">
-    <h1>📦 Vault Server 📦</h1>
-    <form onsubmit="api.login()" id="login">
+<body onload="dom.load()">
+    <h1>Vault Server 📦</h1>
+    <form id="login" method="post" action="login">
         <input type="hidden" name="_csrf">
-        <label for="email">Email ✉</label>
+        <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">Password 🗝</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="pa$$word">
         <input type="submit" value="Login 🔒">
     </form>
-    <form onsubmit="api.signup()" id='signup'>
+    <form id='signup' method="post" action="signup">
         <input type="hidden" name="_csrf">
-        <label for="email">Email ✉</label>
+        <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">Password 🗝</label>
+        <label for="password">Password</label>
         <input type="password" name="password" id="password" placeholder="pa$$word">
-        <label for="secret">Secret ✒</label>
+        <label for="secret">Secret</label>
         <input type="text" name="secret" id="secret" placeholder="">
         <input type="submit" value="Signup 🔒">
     </form>
