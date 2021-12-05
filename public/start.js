@@ -1,20 +1,24 @@
 'use strict'
 
 const view = {
-    name: 'hi',
+    current: view.write.hi,
     root: document.createElement('div'),
-    show: (name = 'hi') => {
+    show: (current = view.write.hi) => {
         view.root.remove()
         view.root = document.createElement('div')
-        view.write[name]()
+        view.current = current
+        view.current()
         document.body.append(view.root)
     },
     write: {
         hi: () => {
             const login = document.createElement('button')
             login.value = 'Login 🔒'
-            login.onclick = view.show('login')
+            login.onclick = view.show(view.write.login)
             view.root.append(login)
+        },
+        login: () => {
+
         }
     }
 }
