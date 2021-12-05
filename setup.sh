@@ -39,3 +39,5 @@ echo "Vault Server installed."
 echo "Main folder: /home/serv"
 echo "Current IP address:"
 hostname -I
+echo "Current Environment:"
+cat /home/serv/.env
