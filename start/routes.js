@@ -2,8 +2,10 @@
 
 const Route = use('Route')
 
-Route.post('/login', 'UserController.login')
-Route.post('/signup', 'UserController.signup')
-Route.get('/users', 'UserController.list')
+Route.get('/user', 'UserController.get')
+Route.post('/user', 'UserController.post')
+Route.put('/user', 'UserController.put')
+Route.delete('/user', 'UserController.delete')
+
 Route.get('/csrf', 'MainController.csrf')
 Route.get('*', 'MainController.alive')

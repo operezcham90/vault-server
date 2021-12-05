@@ -10,8 +10,7 @@
     <title>Vault Server 📦</title>
 </head>
 
-<body onload="dom.load()">
-    <h1>Vault Server 📦</h1>
+<template>
     <form id="login" method="post" action="login">
         <input type="hidden" name="_csrf">
         <label for="email">Email</label>
@@ -30,7 +29,11 @@
         <input type="text" name="secret" id="secret" placeholder="">
         <input type="submit" value="Signup 🔒">
     </form>
-    <script src="/api.js"></script>
+</template>
+
+<body onload="start()">
+    <h1>Vault Server 📦</h1>
+    <script src="/start.js"></script>
 </body>
 
 </html>
