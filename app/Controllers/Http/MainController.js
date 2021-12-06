@@ -3,6 +3,7 @@
 const fs = use('fs')
 const Env = use('Env')
 const User = use('App/Models/User')
+const User = use('App/Models/Token')
 
 class MainController {
     alive() {
@@ -45,7 +46,7 @@ class MainController {
         const { email, password } = request.all()
         const user = await auth.attempt(email, password)
         if (user) {
-            await auth.logout()
+            await Token.query().where('user_id', user.id).delete()
             await user.delete()
         }
         response.redirect('/')
