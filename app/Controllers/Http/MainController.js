@@ -45,8 +45,8 @@ class MainController {
         const { email, password } = request.all()
         const user = await auth.attempt(email, password)
         if (user) {
-            await user.delete()
             await auth.logout()
+            await user.delete()
         }
         response.redirect('/')
     }
