@@ -24,11 +24,11 @@ class MainController {
     async login({ auth, request, response }) {
         const { email, password } = request.all()
         await auth.attempt(email, password)
-        response.redirect().back()
+        response.redirect('/')
     }
     async logout() {
         await auth.logout()
-        response.redirect().back()
+        response.redirect('/')
     }
     async signup({ request, response }) {
         const { email, password, secret } = request.all()
@@ -39,7 +39,7 @@ class MainController {
                 password: password
             })
         }
-        response.redirect().back()
+        response.redirect('/')
     }
     async dropout({ auth, request }) {
         const { email, password } = request.all()
@@ -48,7 +48,7 @@ class MainController {
             await user.delete()
             await auth.logout()
         }
-        response.redirect().back()
+        response.redirect('/')
     }
 }
 
