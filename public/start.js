@@ -8,5 +8,5 @@ document.body.onload = async () => {
         input.value = token
     }
     const user = await fetch('/user')
-    document.getElementById('user').value = await user.json()
+    document.getElementById('user').value = await user.text()
 }
