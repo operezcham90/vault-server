@@ -42,7 +42,7 @@ class MainController {
         }
         response.redirect('/')
     }
-    async dropout({ auth, request }) {
+    async dropout({ auth, request, response }) {
         const { email, password } = request.all()
         const user = await auth.attempt(email, password)
         if (user) {
