@@ -8,6 +8,5 @@ document.body.onload = async () => {
         input.value = token
     }
     const user = await fetch('/user')
-    const { email } = await user.json()
-    document.getElementById('user').value = email
+    document.getElementById('user').value = await user.json()
 }
