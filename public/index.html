@@ -12,8 +12,9 @@
 
 <body>
     <h1>Vault Server 📦</h1>
+    <input type="text" id="user">
     <h2>Login</h2>
-    <form id="login" method="post" action="login">
+    <form method="post" action="login">
         <input type="hidden" name="_csrf">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
@@ -22,7 +23,7 @@
         <input type="submit" value="Login 🔒">
     </form>
     <h2>Signup</h2>
-    <form id='signup' method="post" action="signup">
+    <form method="post" action="signup">
         <input type="hidden" name="_csrf">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
@@ -31,6 +32,20 @@
         <label for="secret">Secret</label>
         <input type="text" name="secret" id="secret" placeholder="">
         <input type="submit" value="Signup 🔒">
+    </form>
+    <h2>Logout</h2>
+    <form method="post" action="logout">
+        <input type="hidden" name="_csrf">
+        <input type="submit" value="Logout 🔒">
+    </form>
+    <h2>Dropout</h2>
+    <form method="post" action="dropout">
+        <input type="hidden" name="_csrf">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="pa$$word">
+        <input type="submit" value="Dropout 🔒">
     </form>
     <script src="/start.js"></script>
 </body>
