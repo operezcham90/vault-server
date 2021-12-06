@@ -19,6 +19,11 @@
         <input type="password" name="password" id="password" placeholder="pa$$word">
         <input type="submit" value="Login 🔒">
     </form>
+</template>
+
+<body>
+    <h1>Vault Server 📦</h1>
+    <h2>Signup</h2>
     <form id='signup' method="post" action="signup">
         <input type="hidden" name="_csrf">
         <label for="email">Email</label>
@@ -29,10 +34,6 @@
         <input type="text" name="secret" id="secret" placeholder="">
         <input type="submit" value="Signup 🔒">
     </form>
-</template>
-
-<body onload="view.show()">
-    <h1>Vault Server 📦</h1>
     <script src="/start.js"></script>
 </body>
 
