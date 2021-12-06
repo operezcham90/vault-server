@@ -26,7 +26,7 @@ class MainController {
         await auth.attempt(email, password)
         response.redirect('/')
     }
-    async logout() {
+    async logout({ auth, response }) {
         await auth.logout()
         response.redirect('/')
     }
