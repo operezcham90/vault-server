@@ -24,7 +24,11 @@ class MainController {
     }
     async login({ auth, request, response }) {
         const { email, password } = request.all()
-        await auth.attempt(email, password)
+        try {
+            await auth.attempt(email, password)
+        } catch (e) {
+            response.status(401)
+        }
         response.redirect('/')
     }
     async logout({ auth, response }) {
@@ -44,10 +48,14 @@ class MainController {
     }
     async dropout({ auth, request, response }) {
         const { email, password } = request.all()
-        const user = await auth.attempt(email, password)
-        if (user) {
-            await Token.query().where('user_id', user.id).delete()
-            await user.delete()
+        try {
+            const user = await auth.attempt(email, password)
+            if (user) {
+                await Token.query().where('user_id', user.id).delete()
+                await user.delete()
+            }
+        } catch (e) {
+            response.status(401)
         }
         response.redirect('/')
     }
