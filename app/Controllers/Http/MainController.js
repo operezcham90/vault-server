@@ -52,6 +52,7 @@ class MainController {
     }
     async dropout({ auth, request, response }) {
         const { email, password } = request.all()
+        await auth.logout()
         try {
             const user = await auth.attempt(email, password)
             if (user) {
