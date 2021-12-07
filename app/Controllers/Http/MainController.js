@@ -38,11 +38,15 @@ class MainController {
     async signup({ request, response }) {
         const { email, password, secret } = request.all()
         if (secret === Env.get('APP_KEY')) {
-            await User.create({
-                username: email,
-                email: email,
-                password: password
-            })
+            try {
+                await User.create({
+                    username: email,
+                    email: email,
+                    password: password
+                })
+            } catch (e) {
+                response.status(401)
+            }
         }
         response.redirect('/')
     }
