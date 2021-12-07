@@ -18,9 +18,13 @@ class MainController {
     }
     async user({ auth }) {
         if (auth.user) {
-            return auth.user.email
+            return {
+                email: auth.user.email
+            }
         }
-        return null
+        return {
+            email: null
+        }
     }
     async login({ auth, request, response }) {
         const { email, password } = request.all()
