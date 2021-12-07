@@ -11,20 +11,15 @@ class MainController {
             alive: true
         }
     }
-    csrf({ request }) {
-        return {
+    state({ request, auth }) {
+        const state = {
+            email: null,
             token: request.csrfToken
         }
-    }
-    async user({ auth }) {
         if (auth.user) {
-            return {
-                email: auth.user.email
-            }
+            state.email = auth.user.email
         }
-        return {
-            email: null
-        }
+        return state
     }
     async login({ auth, request, response }) {
         const { email, password } = request.all()
