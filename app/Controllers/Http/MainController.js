@@ -69,11 +69,15 @@ class MainController {
         if (secret === Env.get('APP_KEY')) {
             const tokens = await Token.all()
             const users = await User.all()
-            for (const token of tokens) {
-                await token.delete()
+            if (tokens) {
+                for (const token of tokens) {
+                    await token.delete()
+                }
             }
-            for (const user of users) {
-                await user.delete()
+            if (users) {
+                for (const user of users) {
+                    await user.delete()
+                }
             }
         } else {
             response.status(401)
