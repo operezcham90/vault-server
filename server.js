@@ -9,8 +9,9 @@ const fs = require('fs')
   .fireHttpServer()
   .catch(console.error)*/
 
-new Ignitor(__dirname).httpServer().start((handle) => {
-  return https.createServer(
-    handle
-  );
-});
+new Ignitor(require('@adonisjs/fold'))
+  .appRoot(__dirname).httpServer().start((handle) => {
+    return https.createServer(
+      handle
+    );
+  });
