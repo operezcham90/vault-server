@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Vault Server 📦</title>
+</head>
+
+<body>
+    <h2>Signup</h2>
+    <form method="post" action="signup">
+        <input type="hidden" name="_csrf">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="john.doe@gmail.com">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="pa$$word">
+        <label>Secret</label>
+        <input type="text" name="secret">
+        <input type="submit" value="Signup 🔒">
+    </form>
+    <hr>
+    <h2>Dropout</h2>
+    <form method="post" action="dropout">
+        <input type="hidden" name="_csrf">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="john.doe@gmail.com">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="pa$$word">
+        <input type="submit" value="Dropout 🔒">
+    </form>
+    <hr>
+    <h2>Reset</h2>
+    ⚠ Delete all users and tokens to reset the system
+    <form method="post" action="reset">
+        <input type="hidden" name="_csrf">
+        <label>Secret</label>
+        <input type="text" name="secret">
+        <input type="submit" value="Reset 💣">
+    </form>
+    <script>
+        const response = await fetch('/state')
+        const { token } = await response.json()
+        const elements = document.getElementsByName('_csrf')
+        for (const element of elements) {
+            element.value = token
+        }
+    </script>
+</body>
+
+</html>

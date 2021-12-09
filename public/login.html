@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Vault Server 📦</title>
+</head>
+
+<body>
+    <form method="post" action="login">
+        <input type="hidden" name="_csrf">
+        <label>Email</label>
+        <input type="text" name="email" placeholder="john.doe@gmail.com">
+        <label>Password</label>
+        <input type="password" name="password" placeholder="pa$$word">
+        <input type="submit" value="Login 🔒">
+    </form>
+    <a href="/admin.html">Admin ⚙</a>
+    <script>
+        const response = await fetch('/state')
+        const { email, token } = await response.json()
+        if (email) {
+            window.location.replace('/desk.html')
+        }
+        const elements = document.getElementsByName('_csrf')
+        for (const element of elements) {
+            element.value = token
+        }
+    </script>
+</body>
+
+</html>
