@@ -1,17 +1,17 @@
 'use strict'
 
 const { Ignitor } = require('@adonisjs/ignitor')
-const http = require('http')
+const https = require('https')
 const fs = require('fs')
 
-/*new Ignitor(require('@adonisjs/fold'))
-  .appRoot(__dirname)
-  .fireHttpServer()
-  .catch(console.error)*/
+const options = {
+  key: fs.readFileSync('./localhost.key'),
+  cert: fs.readFileSync('./localhost.crt')
+}
 
 new Ignitor(require('@adonisjs/fold'))
-  .appRoot(__dirname).httpServer().start((handle) => {
-    return https.createServer(
-      handle
-    );
-  });
+  .appRoot(__dirname)
+  .fireHttpServer((handler) => {
+    return https.createServer(options, handler)
+  })
+  .catch(console.error)
