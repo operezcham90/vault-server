@@ -21,6 +21,8 @@ uuidgen -r >> .env
 echo "HOST=0.0.0.0" >> .env
 echo "PORT=80" >> .env
 
+openssl req -new -nodes -x509 -days 365 -keyout localhost.key -out localhost.crt -config localhost.csr
+
 # database
 sudo -u postgres createdb vault
 sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'pass';"
