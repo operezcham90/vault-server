@@ -42,11 +42,13 @@
         <input type="submit" value="Reset 💣">
     </form>
     <script>
-        const response = await fetch('/state')
-        const { token } = await response.json()
-        const elements = document.getElementsByName('_csrf')
-        for (const element of elements) {
-            element.value = token
+        window.onload = async () => {
+            const response = await fetch('/state')
+            const { token } = await response.json()
+            const elements = document.getElementsByName('_csrf')
+            for (const element of elements) {
+                element.value = token
+            }
         }
     </script>
 </body>

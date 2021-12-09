@@ -13,12 +13,14 @@
 <body>
     ⏳
     <script>
-        const response = await fetch('/state')
-        const { email } = await response.json()
-        if (email) {
-            window.location.replace('/desk.html')
+        window.onload = async () => {
+            const response = await fetch('/state')
+            const { email } = await response.json()
+            if (email) {
+                window.location.replace('/desk.html')
+            }
+            window.location.replace('/login.html')
         }
-        window.location.replace('/login.html')
     </script>
 </body>
 

@@ -21,14 +21,16 @@
     </form>
     <a href="/admin.html">Admin ⚙</a>
     <script>
-        const response = await fetch('/state')
-        const { email, token } = await response.json()
-        if (email) {
-            window.location.replace('/desk.html')
-        }
-        const elements = document.getElementsByName('_csrf')
-        for (const element of elements) {
-            element.value = token
+        window.onload = async () => {
+            const response = await fetch('/state')
+            const { email, token } = await response.json()
+            if (email) {
+                window.location.replace('/desk.html')
+            }
+            const elements = document.getElementsByName('_csrf')
+            for (const element of elements) {
+                element.value = token
+            }
         }
     </script>
 </body>
