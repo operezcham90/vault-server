@@ -34,11 +34,11 @@
     </form>
     <hr>
     <h2>Reset</h2>
-    ⚠ Delete all users and tokens to reset the system
     <form method="post" action="reset">
         <input type="hidden" name="_csrf">
         <label>Secret</label>
         <input type="text" name="secret">
+        ⚠ This deletes all users and tokens
         <input type="submit" value="Reset 💣">
     </form>
     <script>

@@ -63,6 +63,23 @@ class MainController {
         }
         response.redirect('/')
     }
+    async reset({ auth, request, response }) {
+        const { secret } = request.all()
+        await auth.logout()
+        if (secret === Env.get('APP_KEY')) {
+            const tokens = await Token.all()
+            const users = await User.all()
+            for (const token of tokens) {
+                await token.delete()
+            }
+            for (const user of users) {
+                await user.delete()
+            }
+        } else {
+            response.status(401)
+        }
+        response.redirect('/')
+    }
 }
 
 module.exports = MainController
