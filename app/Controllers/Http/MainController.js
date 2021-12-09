@@ -67,8 +67,8 @@ class MainController {
         const { secret } = request.all()
         await auth.logout()
         if (secret === Env.get('APP_KEY')) {
-            await Token.delete()
-            await User.delete()
+            await Token.query().truncate()
+            await User.query().truncate()
         } else {
             response.status(401)
         }
