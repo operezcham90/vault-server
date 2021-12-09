@@ -19,6 +19,7 @@ wget https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
+* Navigate to `https://192.168.0.X`. Note: the HTTPS certificate is self-signed, accept the risk since the server is thrusted 
 
 ## References
 * [AdonisJs 4.1](https://legacy.adonisjs.com/docs/4.1/installation)

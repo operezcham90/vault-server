@@ -19,7 +19,7 @@ npm install
 printf "APP_KEY=" >> .env
 uuidgen -r >> .env
 echo "HOST=0.0.0.0" >> .env
-echo "PORT=80" >> .env
+echo "PORT=443" >> .env
 
 openssl req -new -nodes -x509 -days 365 -keyout localhost.key -out localhost.crt -config localhost.csr
 
