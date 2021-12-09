@@ -7,46 +7,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <style>
+        .invisible {
+            display: none;
+        }
+    </style>
     <title>Vault Server 📦</title>
 </head>
 
 <body>
     <h1>Vault Server 📦</h1>
     <input type="text" id="user">
-    <h2>Login</h2>
-    <form method="post" action="login">
-        <input type="hidden" name="_csrf">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="pa$$word">
-        <input type="submit" value="Login 🔒">
-    </form>
-    <h2>Signup</h2>
-    <form method="post" action="signup">
-        <input type="hidden" name="_csrf">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="pa$$word">
-        <label for="secret">Secret</label>
-        <input type="text" name="secret" id="secret" placeholder="">
-        <input type="submit" value="Signup 🔒">
-    </form>
-    <h2>Logout</h2>
-    <form method="post" action="logout">
-        <input type="hidden" name="_csrf">
-        <input type="submit" value="Logout 🔒">
-    </form>
-    <h2>Dropout</h2>
-    <form method="post" action="dropout">
-        <input type="hidden" name="_csrf">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="pa$$word">
-        <input type="submit" value="Dropout 🔒">
-    </form>
+    <section id="login">
+        <h2>Login</h2>
+        <form method="post" action="login">
+            <input type="hidden" name="_csrf">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="pa$$word">
+            <input type="submit" value="Login 🔒">
+        </form>
+    </section>
+    <section id="signup" class="invisible">
+        <h2>Signup</h2>
+        <form method="post" action="signup">
+            <input type="hidden" name="_csrf">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="pa$$word">
+            <label for="secret">Secret</label>
+            <input type="text" name="secret" id="secret" placeholder="">
+            <input type="submit" value="Signup 🔒">
+        </form>
+    </section>
+    <section id="logout" class="invisible">
+        <h2>Logout</h2>
+        <form method="post" action="logout">
+            <input type="hidden" name="_csrf">
+            <input type="submit" value="Logout 🔒">
+        </form>
+    </section>
+    <section id="dropout" class="invisible">
+        <h2>Dropout</h2>
+        <form method="post" action="dropout">
+            <input type="hidden" name="_csrf">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="john.doe@gmail.com">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="pa$$word">
+            <input type="submit" value="Dropout 🔒">
+        </form>
+    </section>
     <script src="/start.js"></script>
 </body>
 
