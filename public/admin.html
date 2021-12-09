@@ -12,7 +12,7 @@
 
 <body>
     <h2>Signup</h2>
-    <form method="post" action="signup">
+    <form method="post" action="signup" autocomplete="off">
         <input type="hidden" name="_csrf">
         <label>Email</label>
         <input type="text" name="email" placeholder="john.doe@gmail.com">
@@ -24,7 +24,7 @@
     </form>
     <hr>
     <h2>Dropout</h2>
-    <form method="post" action="dropout">
+    <form method="post" action="dropout" autocomplete="off">
         <input type="hidden" name="_csrf">
         <label>Email</label>
         <input type="text" name="email" placeholder="john.doe@gmail.com">
@@ -34,7 +34,7 @@
     </form>
     <hr>
     <h2>Reset</h2>
-    <form method="post" action="reset">
+    <form method="post" action="reset" autocomplete="off">
         <input type="hidden" name="_csrf">
         <label>Secret</label>
         <input type="text" name="secret">
