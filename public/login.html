@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    <form method="get" action="/admin.html">
+        <input type="submit" value="Admin ⚙">
+    </form>
+    <hr>
     <form method="post" action="login">
         <input type="hidden" name="_csrf">
         <label>Email</label>
@@ -19,7 +23,6 @@
         <input type="password" name="password" placeholder="pa$$word">
         <input type="submit" value="Login 🔒">
     </form>
-    <a href="/admin.html">Admin ⚙</a>
     <script>
         window.onload = async () => {
             const response = await fetch('/state')

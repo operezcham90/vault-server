@@ -11,12 +11,15 @@
 </head>
 
 <body>
+    <form method="get" action="/admin.html">
+        <input type="submit" value="Admin ⚙">
+    </form>
+    <hr>
     Hi, <input type="text" id="user" disabled>
     <form method="post" action="logout">
         <input type="hidden" name="_csrf">
         <input type="submit" value="Logout 🔒">
     </form>
-    <a href="/admin.html">Admin ⚙</a>
     <script>
         window.onload = async () => {
             const response = await fetch('/state')
