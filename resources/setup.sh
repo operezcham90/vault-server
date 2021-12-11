@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# base packages
+# packages
 apt -y update
 apt -y install git
 apt -y install npm
 apt -y install postgresql
 
-# main folder
+# folder
 rm -R /home/serv
 mkdir /home/serv
 cd /home/serv
@@ -22,7 +22,9 @@ echo "HOST=0.0.0.0" >> .env
 echo "PORT=443" >> .env
 
 # certificate
-openssl req -new -nodes -x509 -days 365 -keyout localhost.key -out localhost.crt -config localhost.csr
+cd resources
+openssl req -new -nodes -x509 -days 3650 -keyout .key -out .crt -config .cnf
+cd ..
 
 # database
 sudo -u postgres createdb vault
@@ -36,11 +38,11 @@ pm2 restart server.js
 pm2 save
 pm2 startup
 
-# end notes
-cat /home/serv/title.txt
+# done
+cat resources/fab.txt
 echo "Vault Server installed."
 echo "Main folder: /home/serv"
 echo "Current IP address:"
 hostname -I
 echo "Current Environment:"
-cat /home/serv/.env
+cat .env

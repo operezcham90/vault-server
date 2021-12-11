@@ -5,8 +5,8 @@ const https = require('https')
 const fs = require('fs')
 
 const options = {
-  key: fs.readFileSync('./localhost.key'),
-  cert: fs.readFileSync('./localhost.crt')
+  key: fs.readFileSync('./resources/.key'),
+  cert: fs.readFileSync('./resources/.crt')
 }
 
 new Ignitor(require('@adonisjs/fold'))
