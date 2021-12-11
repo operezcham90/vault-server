@@ -21,7 +21,20 @@
         <input type="hidden" name="_csrf">
         <input type="submit" value="Logout 🔒">
     </form>
+    <input type="file" id="file" multiple onchange="preview(this)">
+    <input type="button" value="Search 📂" onclick="search()">
     <script>
+        const search = () => {
+            document.getElementById('file').click()
+        }
+        const preview = (input) => {
+            const nf = new Intl.NumberFormat('en-US')
+            for (var i = 0; i < input.files.length; i++) {
+                console.log(input.files[i].name)
+                console.log(input.files[i].type)
+                console.log(nf.format(input.files[i].size))
+            }
+        }
         window.onload = async () => {
             const response = await fetch('/state')
             const { email, token } = await response.json()
