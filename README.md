@@ -13,9 +13,9 @@ A local storage server to organize home files 📦
 sudo apt-get update
 sudo apt-get -y install openssh-server
 ```
-* Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/setup.sh)
+* Run [setup.sh](https://github.com/operezcham90/vault-server/blob/master/resources/setup.sh)
 ```
-wget https://raw.githubusercontent.com/operezcham90/vault-server/master/setup.sh
+wget https://raw.githubusercontent.com/operezcham90/vault-server/master/resources/setup.sh
 chmod +x setup.sh
 sudo ./setup.sh
 ```
