@@ -37,8 +37,10 @@
         const item = (file) => {
             const nf = new Intl.NumberFormat('en-US')
             const item = document.createElement('div')
-            const name = item.createElement('p', { class: 'long' })
-            name.createTextNode(file.name)
+            const long = document.createElement('p', { class: 'long' })
+            const name = document.createTextNode(file.name)
+            long.appendChild(name)
+            item.appendChild(long)
             document.appendChild(item)
         }
         const preview = (input) => {
