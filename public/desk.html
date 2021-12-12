@@ -39,7 +39,7 @@
             const item = document.createElement('div')
             const long = document.createElement('p', { class: 'long' })
             const name = document.createTextNode(file.name)
-            document.appendChild(item)
+            document.body.appendChild(item)
             item.appendChild(long)
             long.appendChild(name)
         }
