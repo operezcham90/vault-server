@@ -12,6 +12,10 @@
         p.long {
             word-wrap: break-word;
         }
+
+        .hid {
+            display: none;
+        }
     </style>
 </head>
 
@@ -28,7 +32,7 @@
     </form>
     <h2>Select Files</h2>
     <hr>
-    <input type="file" id="file" hidden multiple onchange="preview(this)">
+    <input type="file" id="file" class="hid" multiple onchange="preview(this)">
     <input type="button" value="Search 📂" onclick="search()">
     <script>
         const search = () => {
