@@ -32,8 +32,11 @@
     </form>
     <h2>Select Files</h2>
     <hr>
-    <input type="file" id="file" class="hid" multiple onchange="preview(this)">
-    <input type="button" value="Search 📂" onclick="search()">
+    <form>
+        <input type="file" id="file" class="hid" multiple onchange="preview(this)">
+        <input type="button" value="Search 📂" onclick="search()">
+        <input type="submit" value="Upload 💾">
+    </form>
     <script>
         const search = () => {
             document.getElementById('file').click()
@@ -42,7 +45,7 @@
             const nf = new Intl.NumberFormat('en-US')
             const limit = document.createElement('hr')
             const item = document.createElement('div')
-            const long = document.createElement('p', { class: 'long' })
+            const long = document.createElement('code')
             const name = document.createTextNode(file.name)
             document.body.appendChild(item)
             item.appendChild(limit)
