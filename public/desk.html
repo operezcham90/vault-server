@@ -46,11 +46,17 @@
             const limit = document.createElement('hr')
             const item = document.createElement('div')
             const long = document.createElement('code')
-            const name = document.createTextNode(file.name + '\n')
+            const name = document.createTextNode(file.name)
+            const type = document.createTextNode(file.type)
+            const size = document.createTextNode(file.size)
+            const date = document.createTextNode(file.lastModified)
             document.body.appendChild(item)
             item.appendChild(long)
             item.appendChild(limit)
             long.appendChild(name)
+            long.appendChild(type)
+            long.appendChild(size)
+            long.appendChild(date)
         }
         const preview = (input) => {
             for (var i = 0; i < input.files.length; i++) {
