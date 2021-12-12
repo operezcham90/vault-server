@@ -26,9 +26,9 @@
         <input type="text" id="user" disabled>
         <input type="submit" value="Logout 🔒">
     </form>
-    <h1>Select Files</h1>
+    <h2>Select Files</h2>
     <hr>
-    <input type="file" id="file" visbility="hidden" multiple onchange="preview(this)">
+    <input type="file" id="file" hidden multiple onchange="preview(this)">
     <input type="button" value="Search 📂" onclick="search()">
     <script>
         const search = () => {
