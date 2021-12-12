@@ -46,10 +46,10 @@
             const limit = document.createElement('hr')
             const item = document.createElement('div')
             const long = document.createElement('code')
-            const name = document.createTextNode(file.name)
+            const name = document.createTextNode(file.name + '\n')
             document.body.appendChild(item)
-            item.appendChild(limit)
             item.appendChild(long)
+            item.appendChild(limit)
             long.appendChild(name)
         }
         const preview = (input) => {
