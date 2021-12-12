@@ -43,16 +43,19 @@
         }
         const item = (file) => {
             const nf = new Intl.NumberFormat('en-US')
-            const limit = document.createElement('hr')
+            const df = new Intl.DateTimeFormat('en-US')
+            const rule = document.createElement('hr')
             const item = document.createElement('div')
-            const long = document.createElement('code')
-            const name = document.createTextNode(file.name)
-            const type = document.createTextNode(file.type)
-            const size = document.createTextNode(file.size)
-            const date = document.createTextNode(file.lastModified)
+            const name = document.createElement('code')
+            const type = document.createElement('code')
+            const size = document.createElement('code')
+            const date = document.createElement('code')
+            name.textContent = file.name
+            type.textContent = file.type
+            size.textContent = nf.format(file.size)
+            date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
-            item.appendChild(long)
-            item.appendChild(limit)
+            item.appendChild(rule)
             long.appendChild(name)
             long.appendChild(type)
             long.appendChild(size)
