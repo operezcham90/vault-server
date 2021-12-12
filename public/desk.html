@@ -39,9 +39,9 @@
             const item = document.createElement('div')
             const long = document.createElement('p', { class: 'long' })
             const name = document.createTextNode(file.name)
-            long.appendChild(name)
-            item.appendChild(long)
             document.appendChild(item)
+            item.appendChild(long)
+            long.appendChild(name)
         }
         const preview = (input) => {
             for (var i = 0; i < input.files.length; i++) {
