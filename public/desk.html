@@ -56,10 +56,10 @@
             date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
             item.appendChild(rule)
-            long.appendChild(name)
-            long.appendChild(type)
-            long.appendChild(size)
-            long.appendChild(date)
+            item.appendChild(name)
+            item.appendChild(type)
+            item.appendChild(size)
+            item.appendChild(date)
         }
         const preview = (input) => {
             for (var i = 0; i < input.files.length; i++) {
