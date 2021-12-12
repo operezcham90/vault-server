@@ -36,10 +36,12 @@
         }
         const item = (file) => {
             const nf = new Intl.NumberFormat('en-US')
+            const limit = document.createElement('hr')
             const item = document.createElement('div')
             const long = document.createElement('p', { class: 'long' })
             const name = document.createTextNode(file.name)
             document.body.appendChild(item)
+            item.appendChild(limit)
             item.appendChild(long)
             long.appendChild(name)
         }
