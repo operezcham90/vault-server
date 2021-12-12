@@ -8,6 +8,11 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
     <title>Vault Server 📦</title>
+    <style>
+        p.long {
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 
 <body>
@@ -16,24 +21,29 @@
     </form>
     <h1>Desk</h1>
     <hr>
-    Hi, <input type="text" id="user" disabled>
     <form method="post" action="logout">
         <input type="hidden" name="_csrf">
+        <input type="text" id="user" disabled>
         <input type="submit" value="Logout 🔒">
     </form>
-    <input type="file" id="file" multiple onchange="preview(this)">
+    <h1>Select Files</h1>
+    <hr>
+    <input type="file" id="file" visbility="hidden" multiple onchange="preview(this)">
     <input type="button" value="Search 📂" onclick="search()">
     <script>
         const search = () => {
             document.getElementById('file').click()
         }
-        const preview = (input) => {
+        const item = (file) => {
             const nf = new Intl.NumberFormat('en-US')
+            const item = document.createElement('div')
+            const name = item.createElement('p', { class: 'long' })
+            name.createTextNode(file.name)
+            document.appendChild(item)
+        }
+        const preview = (input) => {
             for (var i = 0; i < input.files.length; i++) {
-                console.log(input.files[i].name)
-                console.log(input.files[i].type)
-                console.log(input.files[i])
-                console.log(nf.format(input.files[i].size))
+                item(files[i])
             }
         }
         window.onload = async () => {
