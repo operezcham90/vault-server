@@ -64,7 +64,7 @@
             const br = document.createElement('br')
             name.textContent = file.name
             type.textContent = file.type
-            size.textContent = nf.format(file.size + ' bytes')
+            size.textContent = nf.format(file.size) + ' bytes'
             date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
             item.appendChild(hr)
