@@ -41,7 +41,7 @@
         const search = () => {
             document.getElementById('file').click()
         }
-        const item = (file) => {
+        const item = async (file) => {
             options = {
                 weekday: 'long',
                 year: 'numeric',
@@ -52,7 +52,7 @@
                 second: 'numeric',
                 timeZone: 'UTC',
                 timeZoneName: 'short'
-            };
+            }
             const nf = new Intl.NumberFormat('en-US')
             const df = new Intl.DateTimeFormat('en-US', options)
             const item = document.createElement('div')
@@ -81,9 +81,9 @@
                 item.appendChild(img)
             }
         }
-        const preview = (input) => {
+        const preview = async (input) => {
             for (var i = 0; i < input.files.length; i++) {
-                item(input.files[i])
+                await item(input.files[i])
             }
         }
         window.onload = async () => {
