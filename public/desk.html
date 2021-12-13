@@ -16,12 +16,6 @@
         .hid {
             display: none;
         }
-
-        img {
-            float: right;
-            max-width: 20%;
-            max-height: 100px;
-        }
     </style>
 </head>
 
@@ -96,9 +90,12 @@
             const result = await read(file)
             if (file.type.includes('image')) {
                 const img = document.createElement('img')
-                const reader = new FileReader()
                 img.src = result
                 item.appendChild(img)
+            } else {
+                const code = document.createElement('code')
+                code.innerHTML = result
+                item.appendChild(code)
             }
         }
         const preview = async (input) => {
