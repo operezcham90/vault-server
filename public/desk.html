@@ -73,7 +73,7 @@
             item.appendChild(br)
             item.appendChild(size)
             item.appendChild(date)
-            if (type.contains('image')) {
+            if (file.type.includes('image')) {
                 const img = document.createElement('img')
                 const reader = new FileReader()
                 const event = await reader.readAsDataURL(file)
