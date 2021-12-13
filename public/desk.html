@@ -60,15 +60,17 @@
             const type = document.createElement('kbd')
             const size = document.createElement('kbd')
             const date = document.createElement('kbd')
+            const hr = document.createElement('hr')
+            const br = document.createElement('br')
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size + ' bytes')
             date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
-            item.appendChild('hr')
+            item.appendChild(hr)
             item.appendChild(name)
             item.appendChild(type)
-            item.appendChild('br')
+            item.appendChild(br)
             item.appendChild(size)
             item.appendChild(date)
         }
