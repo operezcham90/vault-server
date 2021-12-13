@@ -77,6 +77,7 @@
                 const img = document.createElement('img')
                 const reader = new FileReader()
                 const event = await reader.readAsDataURL(file)
+                console.log(event)
                 img.src = event.target.result
                 item.appendChild(img)
             }
