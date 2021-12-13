@@ -48,7 +48,7 @@
                     resolve(reader.result)
                 }
                 reader.onerror = reject
-                if (file.type.includes('image')) {
+                if (file.type.includes('image') || file.type.includes('video')) {
                     reader.readAsDataURL(file)
                 } else {
                     reader.readAsText(file)
@@ -92,6 +92,12 @@
                 const img = document.createElement('img')
                 img.src = result
                 item.appendChild(img)
+            } else if (file.type.includes('video')) {
+                const vid = document.createElement('video')
+                vid.controls = true
+                const source = document.createElement('source')
+                source.type = file.type
+                source.src = result
             } else {
                 const code = document.createElement('code')
                 code.innerHTML = result
