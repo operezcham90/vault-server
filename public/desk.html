@@ -41,8 +41,20 @@
         const search = () => {
             document.getElementById('file').click()
         }
+        const read = async (file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onload = () => {
+                    resolve(reader.result)
+                }
+                reader.onerror = reject
+                if (file.type.includes('image')) {
+                    reader.readAsDataURL(file)
+                }
+            })
+        }
         const item = async (file) => {
-            options = {
+            const op = {
                 weekday: 'long',
                 year: 'numeric',
                 month: 'long',
@@ -54,7 +66,7 @@
                 timeZoneName: 'short'
             }
             const nf = new Intl.NumberFormat('en-US')
-            const df = new Intl.DateTimeFormat('en-US', options)
+            const df = new Intl.DateTimeFormat('en-US', op)
             const item = document.createElement('div')
             const name = document.createElement('kbd')
             const type = document.createElement('kbd')
@@ -73,12 +85,11 @@
             item.appendChild(br)
             item.appendChild(size)
             item.appendChild(date)
+            const result = await read(file)
             if (file.type.includes('image')) {
                 const img = document.createElement('img')
                 const reader = new FileReader()
-                const event = await reader.readAsDataURL(file)
-                console.log(event)
-                img.src = event.target.result
+                img.src = result
                 item.appendChild(img)
             }
         }
