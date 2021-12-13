@@ -42,8 +42,19 @@
             document.getElementById('file').click()
         }
         const item = (file) => {
+            options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                timeZone: 'UTC',
+                timeZoneName: 'short'
+            };
             const nf = new Intl.NumberFormat('en-US')
-            const df = new Intl.DateTimeFormat('en-US')
+            const df = new Intl.DateTimeFormat('en-US', options)
             const rule = document.createElement('hr')
             const item = document.createElement('div')
             const name = document.createElement('code')
