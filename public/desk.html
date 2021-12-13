@@ -55,20 +55,20 @@
             };
             const nf = new Intl.NumberFormat('en-US')
             const df = new Intl.DateTimeFormat('en-US', options)
-            const rule = document.createElement('hr')
             const item = document.createElement('div')
-            const name = document.createElement('code')
-            const type = document.createElement('code')
-            const size = document.createElement('code')
-            const date = document.createElement('code')
+            const name = document.createElement('kbd')
+            const type = document.createElement('kbd')
+            const size = document.createElement('kbd')
+            const date = document.createElement('kbd')
             name.textContent = file.name
             type.textContent = file.type
-            size.textContent = nf.format(file.size)
+            size.textContent = nf.format(file.size + ' bytes')
             date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
-            item.appendChild(rule)
+            item.appendChild('hr')
             item.appendChild(name)
             item.appendChild(type)
+            item.appendChild('br')
             item.appendChild(size)
             item.appendChild(date)
         }
