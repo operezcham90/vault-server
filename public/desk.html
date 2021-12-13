@@ -56,6 +56,8 @@
                 reader.onerror = reject
                 if (file.type.includes('image')) {
                     reader.readAsDataURL(file)
+                } else {
+                    reader.readAsText(file)
                 }
             })
         }
