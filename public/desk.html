@@ -91,10 +91,7 @@
             } else if (file.type.includes('video')) {
                 const vid = document.createElement('video')
                 vid.controls = true
-                const source = document.createElement('source')
-                source.type = file.type
-                source.src = result
-                vid.appendChild(source)
+                vid.src = result
                 item.appendChild(vid)
             } else {
                 const code = document.createElement('code')
