@@ -53,9 +53,9 @@
         }
         const item = async (file) => {
             const op = {
-                weekday: 'long',
+                weekday: 'short',
                 year: 'numeric',
-                month: 'long',
+                month: 'short',
                 day: 'numeric',
                 hour: 'numeric',
                 minute: 'numeric',
@@ -80,9 +80,9 @@
             item.appendChild(hr)
             item.appendChild(name)
             item.appendChild(type)
-            item.appendChild(br)
             item.appendChild(size)
             item.appendChild(date)
+            item.appendChild(br)
             const result = await read(file)
             if (file.type.includes('image')) {
                 const img = document.createElement('img')
