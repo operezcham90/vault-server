@@ -37,7 +37,7 @@
             const input = document.createElement('input')
             input.type = 'file'
             input.multiple = 'multiple'
-            input.onchange = preview(input)
+            input.onchange = 'preview(this)'
             //<input type="file" id="file" class="hid" multiple onchange="preview(this)">
             input.click()
         }
