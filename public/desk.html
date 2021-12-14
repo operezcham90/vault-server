@@ -34,10 +34,10 @@
     </form>
     <script>
         const input = document.createElement('input')
+        input.type = 'file'
+        input.multiple = 'multiple'
+        input.onchange = 'preview(this)'
         const search = () => {
-            input.type = 'file'
-            input.multiple = 'multiple'
-            input.onchange = 'preview(this)'
             //<input type="file" id="file" class="hid" multiple onchange="preview(this)">
             input.click()
         }
