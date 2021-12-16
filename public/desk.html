@@ -10,7 +10,7 @@
     <title>Vault Server 📦</title>
     <style>
         .hid {
-            display: none;
+            display: none
         }
     </style>
 </head>
@@ -28,80 +28,32 @@
     </form>
     <h2>Select Files</h2>
     <hr>
-    <form>
+    <form method="post" action="upload">
+        <input type="file" class="hid" name="list" id="list" onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
         <input type="submit" value="Upload 💾">
     </form>
+    <div id="preview"></div>
     <script>
-        const input = document.createElement('input')
-        input.type = 'file'
-        input.multiple = 'multiple'
-        input.onchange = 'preview(this)'
         const search = () => {
-            //<input type="file" id="file" class="hid" multiple onchange="preview(this)">
+            const input = document.getElementById('list')
             input.click()
         }
-        const read = async (file) => {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader()
-                reader.onload = () => {
-                    resolve(reader.result)
-                }
-                reader.onerror = reject
-                if (file.type.includes('image') || file.type.includes('video')) {
-                    reader.readAsDataURL(file)
-                } else {
-                    reader.readAsText(file)
-                }
-            })
-        }
         const item = async (file) => {
-            const op = {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-                second: 'numeric',
-                timeZone: 'UTC',
-                timeZoneName: 'short'
-            }
             const nf = new Intl.NumberFormat('en-US')
-            const df = new Intl.DateTimeFormat('en-US', op)
             const item = document.createElement('div')
             const name = document.createElement('kbd')
             const type = document.createElement('kbd')
             const size = document.createElement('kbd')
-            const date = document.createElement('kbd')
             const hr = document.createElement('hr')
-            const br = document.createElement('br')
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
-            date.textContent = df.format(file.lastModified)
             document.body.appendChild(item)
             item.appendChild(hr)
             item.appendChild(name)
             item.appendChild(type)
             item.appendChild(size)
-            item.appendChild(date)
-            item.appendChild(br)
-            const result = await read(file)
-            if (file.type.includes('image')) {
-                const img = document.createElement('img')
-                img.src = result
-                item.appendChild(img)
-            } else if (file.type.includes('video')) {
-                const vid = document.createElement('video')
-                vid.controls = true
-                vid.src = result
-                item.appendChild(vid)
-            } else {
-                const code = document.createElement('code')
-                code.innerHTML = result
-                item.appendChild(code)
-            }
         }
         const preview = async (input) => {
             for (var i = 0; i < input.files.length; i++) {
