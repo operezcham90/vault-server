@@ -46,17 +46,19 @@
             const type = document.createElement('kbd')
             const size = document.createElement('kbd')
             const hr = document.createElement('hr')
+            const prev = document.getElementById('preview')
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
-            document.body.appendChild(item)
+            prev.appendChild(item)
             item.appendChild(hr)
             item.appendChild(name)
             item.appendChild(type)
             item.appendChild(size)
         }
         const preview = async (input) => {
-            for (var i = 0; i < input.files.length; i++) {
+            document.getElementById('preview').clearChildren();
+            for (let i = 0; i < input.files.length; i++) {
                 await item(input.files[i])
             }
         }
