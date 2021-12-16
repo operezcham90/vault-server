@@ -57,7 +57,8 @@
             item.appendChild(size)
         }
         const preview = async (input) => {
-            document.getElementById('preview').clearChildren();
+            const prev = document.getElementById('preview')
+            prev.innerText = ''
             for (let i = 0; i < input.files.length; i++) {
                 await item(input.files[i])
             }
