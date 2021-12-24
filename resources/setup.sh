@@ -10,10 +10,10 @@ apt -y install postgresql
 rm -R /home/serv
 mkdir /home/serv
 cd /home/serv
-mkdir uploads
 
 # source code
 git clone https://github.com/operezcham90/vault-server.git .
+mkdir uploads
 npm install
 
 # environment
