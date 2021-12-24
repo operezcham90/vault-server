@@ -92,7 +92,7 @@ class MainController {
                     file = uploads[i]
                 }
             } else {
-                const name = uuid.v4() + '.' + file.extname
+                const name = uuid.v4() + '.' + uploads.extname
                 await uploads.move(path, {
                     name: name,
                     overwrite: true
