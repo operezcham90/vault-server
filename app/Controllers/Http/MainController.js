@@ -76,8 +76,8 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         if (auth.user) {
-            const files = request.files();
-            return files;
+            const files = request.files()
+            return files
         }
     }
 }
