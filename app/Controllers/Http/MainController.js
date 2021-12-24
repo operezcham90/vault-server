@@ -85,18 +85,14 @@ class MainController {
             } catch (e) {
                 local = []
             }
-            return local
-            let i = 0
-            let file = files.uploads[i]
-            while (file) {
+            for (const file of files.uploads) {
                 const name = uuid.v4() + '.' + file.extname
                 await file.move(path, {
                     name: name,
                     overwrite: true
                 })
-                i++
-                file = files.uploads[i]
             }
+            return local
         } else {
             response.status(401)
         }
