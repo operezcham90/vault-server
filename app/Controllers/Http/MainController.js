@@ -80,11 +80,11 @@ class MainController {
             const path = '/home/serv/uploads'
             const files = request.files()
             let local
-            try {
+            /*try {
                 local = await fs.promise.readdir(path)
             } catch (e) {
                 local = []
-            }
+            }*/
             let i = 0
             let file = files.uploads[i]
             while (file) {
