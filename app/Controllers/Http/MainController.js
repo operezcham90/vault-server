@@ -94,7 +94,7 @@ class MainController {
                     overwrite: true
                 })
                 i++
-                file = files.uploads[i]
+                file = files.uploads[i] 
             }
             return local
         } else {
