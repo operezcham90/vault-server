@@ -49,9 +49,11 @@
             const size = document.createElement('kbd')
             const hr = document.createElement('hr')
             const prev = document.getElementById('preview')
+            const img = document.createElement('img')
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
+            img.src = URL.createObjectURL(file)
             prev.appendChild(item)
             item.appendChild(hr)
             item.appendChild(name)
@@ -59,6 +61,7 @@
             item.appendChild(type)
             item.appendChild(line)
             item.appendChild(size)
+            item.appendChild(img)
         }
         const preview = async (input) => {
             const prev = document.getElementById('preview')
