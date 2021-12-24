@@ -77,7 +77,7 @@ class MainController {
     async upload({ auth, request, response }) {
         if (auth.user) {
             const files = request.files('uploads')
-            for (const file of files) {
+            for (const file of files.list) {
                 const name = uuid.v4() + '.' + file.extname
                 const path = Helpers.tmpPath('uploads')
                 await file.move(path, {
