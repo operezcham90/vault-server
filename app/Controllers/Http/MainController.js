@@ -22,6 +22,14 @@ class MainController {
         }
         return state
     }
+    async files({ auth }) {
+        if (auth.user) {
+            const files = await fs.promises.readdir('/home/serv/uploads')
+            return files
+        } else {
+            response.status(401)
+        }
+    }
     async login({ auth, request, response }) {
         const { email, password } = request.all()
         try {
