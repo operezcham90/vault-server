@@ -21,14 +21,14 @@
     </form>
     <h1>Desk</h1>
     <hr>
-    <form method="post" action="logout" enctype="multipart/form-data">
+    <form method="post" action="logout">
         <input type="hidden" name="_csrf">
         <input type="text" id="user" disabled>
         <input type="submit" value="Logout 🔒">
     </form>
     <h2>Select Files</h2>
     <hr>
-    <form method="post" action="upload">
+    <form method="post" action="upload" enctype="multipart/form-data">
         <input type="hidden" name="_csrf">
         <input type="file" class="hid" name="list" id="list" multiple onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
