@@ -83,17 +83,12 @@ class MainController {
                 uploads = []
                 uploads.push(request.files('uploads').uploads)
             }
-            let i = 0
-            let file = uploads[i]
-
-            while (file) {
+            for (const file of uploads) {
                 const name = uuid.v4() + '.' + file.extname
                 await file.move(path, {
                     name: name,
                     overwrite: true
                 })
-                i++
-                file = uploads[i]
             }
         } else {
             response.status(401)

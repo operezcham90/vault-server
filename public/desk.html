@@ -63,8 +63,8 @@
         const preview = async (input) => {
             const prev = document.getElementById('preview')
             prev.innerText = ''
-            for (let i = 0; i < input.files.length; i++) {
-                await item(input.files[i])
+            for (const file of input.files) {
+                await item(file)
             }
         }
         window.onload = async () => {
