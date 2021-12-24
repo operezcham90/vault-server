@@ -77,12 +77,12 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         const path = '/home/serv/uploads'
-        const uploads = request.files('uploads').uploads
+        let uploads = request.files('uploads').uploads
         if (auth.user && uploads) {
-            if (uploads.length) {
-                uploads = [uploads]
+            if (!uploads.length) {
+                uploads = []
+                uploads.push(request.files('uploads').uploads)
             }
-            
             let i = 0
             let file = uploads[i]
 
