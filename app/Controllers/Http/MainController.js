@@ -76,31 +76,32 @@ class MainController {
         response.redirect('/')
     }
     async upload({ auth, request, response }) {
-        if (auth.user) {
-            const path = '/home/serv/uploads'
-            const files = request.files()
-            let local = []
-            try {
-                local = await fs.promise.readdir(path)
-            } catch (e) {
-                local = []
-            }
-            let i = 0
-            let file = files.uploads[i]
-            while (file) {
+        const path = '/home/serv/uploads'
+        const uploads = request.files('uploads').uploads
+        if (auth.user && uploads) {
+            if (uploads.length) {
+                let i = 0
+                let file = uploads[i]
+                while (file) {
+                    const name = uuid.v4() + '.' + file.extname
+                    await file.move(path, {
+                        name: name,
+                        overwrite: true
+                    })
+                    i++
+                    file = uploads[i]
+                }
+            } else {
                 const name = uuid.v4() + '.' + file.extname
-                await file.move(path, {
+                await uploads.move(path, {
                     name: name,
                     overwrite: true
                 })
-                i++
-                file = files.uploads[i]
             }
-            return local
         } else {
             response.status(401)
         }
-        //response.redirect('/')
+        response.redirect('/')
     }
 }
 
