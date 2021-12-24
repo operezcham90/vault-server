@@ -81,7 +81,7 @@ class MainController {
             const files = request.files()
             let local
             try {
-                local = await fs.promises.readdir(path)
+                local = await fs.promise.readdir(path)
             } catch (e) {
                 local = []
             }
@@ -94,7 +94,7 @@ class MainController {
                     overwrite: true
                 })
                 i++
-                file = files.uploads[i] 
+                file = files.uploads[i]
             }
             return local
         } else {
