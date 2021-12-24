@@ -79,7 +79,6 @@ class MainController {
             const files = request.files()
             let i = 0
             let file = files.uploads[i]
-            return file
             while (file) {
                 const name = uuid.v4() + '.' + file.extname
                 const path = '/home/serv'
@@ -88,12 +87,12 @@ class MainController {
                     overwrite: true
                 })
                 i++
-                file = files[i]
+                file = files.uploads[i]
             }
         } else {
             response.status(401)
         }
-        //response.redirect('/')
+        response.redirect('/')
     }
 }
 
