@@ -80,23 +80,20 @@ class MainController {
         const uploads = request.files('uploads').uploads
         if (auth.user && uploads) {
             if (uploads.length) {
-                let i = 0
-                let file = uploads[i]
-                while (file) {
-                    const name = uuid.v4() + '.' + file.extname
-                    await file.move(path, {
-                        name: name,
-                        overwrite: true
-                    })
-                    i++
-                    file = uploads[i]
-                }
-            } else {
-                const name = uuid.v4() + '.' + uploads.extname
-                await uploads.move(path, {
+                uploads = [uploads]
+            }
+            
+            let i = 0
+            let file = uploads[i]
+
+            while (file) {
+                const name = uuid.v4() + '.' + file.extname
+                await file.move(path, {
                     name: name,
                     overwrite: true
                 })
+                i++
+                file = uploads[i]
             }
         } else {
             response.status(401)
