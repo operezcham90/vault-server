@@ -74,6 +74,12 @@ class MainController {
         }
         response.redirect('/')
     }
+    async upload({ auth, request, response }) {
+        if (auth.user) {
+            const files = request.files();
+            return auth.user;
+        }
+    }
 }
 
 module.exports = MainController

@@ -2,6 +2,7 @@
 
 const Route = use('Route')
 
+Route.post('/upload', 'MainController.upload')
 Route.post('/dropout', 'MainController.dropout')
 Route.post('/signup', 'MainController.signup')
 Route.post('/login', 'MainController.login')

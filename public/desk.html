@@ -29,6 +29,7 @@
     <h2>Select Files</h2>
     <hr>
     <form method="post" action="upload">
+        <input type="hidden" name="_csrf">
         <input type="file" class="hid" name="list" id="list" multiple onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
         <input type="submit" value="Upload 💾">
