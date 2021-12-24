@@ -1,5 +1,6 @@
 'use strict'
 
+const fs = use('fs')
 const Env = use('Env')
 const User = use('App/Models/User')
 const Token = use('App/Models/Token')
@@ -76,12 +77,14 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         if (auth.user) {
+            const path = '/home/serv/uploads'
             const files = request.files()
+            const local = await fs.promises.readdir(path)
+            return local
             let i = 0
             let file = files.uploads[i]
             while (file) {
                 const name = uuid.v4() + '.' + file.extname
-                const path = '/home/serv/uploads'
                 await file.move(path, {
                     name: name,
                     overwrite: true
@@ -92,7 +95,7 @@ class MainController {
         } else {
             response.status(401)
         }
-        response.redirect('/')
+        //response.redirect('/')
     }
 }
 
