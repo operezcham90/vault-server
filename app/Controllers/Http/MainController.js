@@ -79,7 +79,7 @@ class MainController {
             const files = request.files('uploads')
             let i = 0
             let file = files[i]
-            return file
+            return files
             while (file) {
                 const name = uuid.v4() + '.' + file.extname
                 const path = '/home/serv'
