@@ -76,7 +76,7 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         if (auth.user) {
-            const files = request.files('uploads')
+            const files = request.files()
             let i = 0
             let file = files[i]
             return files
