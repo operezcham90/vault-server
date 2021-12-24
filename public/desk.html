@@ -26,18 +26,18 @@
         <input type="text" id="user" disabled>
         <input type="submit" value="Logout 🔒">
     </form>
-    <h2>Select Files</h2>
+    <h2>Upload Files</h2>
     <hr>
     <form method="post" action="upload" enctype="multipart/form-data">
         <input type="hidden" name="_csrf">
-        <input type="file" class="hid" name="list" id="list" multiple onchange="preview(this)">
+        <input type="file" class="hid" name="uploads" id="uploads" multiple onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
         <input type="submit" value="Upload 💾">
     </form>
     <div id="preview"></div>
     <script>
         const search = () => {
-            const input = document.getElementById('list')
+            const input = document.getElementById('uploads')
             input.click()
         }
         const item = async (file) => {

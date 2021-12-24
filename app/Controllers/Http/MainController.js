@@ -1,9 +1,9 @@
 'use strict'
 
-const fs = use('fs')
 const Env = use('Env')
 const User = use('App/Models/User')
 const Token = use('App/Models/Token')
+const uuid = use('uuid')
 
 class MainController {
     alive() {
@@ -76,9 +76,19 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         if (auth.user) {
-            const files = request.files()
-            return files
+            const files = request.files('uploads')
+            for (const file of files) {
+                const name = uuid.v4() + '.' + file.extname
+                const path = Helpers.tmpPath('uploads')
+                await file.move(path, {
+                    name: name,
+                    overwrite: true
+                })
+            }
+        } else {
+            response.status(401)
         }
+        response.redirect('/')
     }
 }
 
