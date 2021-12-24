@@ -79,7 +79,7 @@ class MainController {
         if (auth.user) {
             const path = '/home/serv/uploads'
             const files = request.files()
-            let local
+            let local = []
             /*try {
                 local = await fs.promise.readdir(path)
             } catch (e) {
