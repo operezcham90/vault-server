@@ -81,7 +81,7 @@ class MainController {
             let file = files[i]
             while (file) {
                 const name = uuid.v4() + '.' + file.extname
-                const path = Helpers.tmpPath('uploads')
+                const path = '/home/serv'
                 await file.move(path, {
                     name: name,
                     overwrite: true
