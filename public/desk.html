@@ -41,7 +41,7 @@
             input.click()
         }
         const img = (file) => {
-            new Promise((resolve) => {
+            return new Promise((resolve) => {
                 const i = new Image()
                 i.onload = () => resolve(true)
                 i.onerror = () => resolve(false)
@@ -62,9 +62,8 @@
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
             if (await img(file)) {
-                tags.textContent += 'image,'
+                tags.textContent = 'img,'
             }
-            prev.appendChild(item)
             item.appendChild(hr)
             item.appendChild(name)
             item.appendChild(line.cloneNode())
