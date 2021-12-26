@@ -68,9 +68,11 @@
             item.appendChild(name)
             item.appendChild(line.cloneNode())
             item.appendChild(type)
-            item.appendChild(line)
+            item.appendChild(line.cloneNode())
             item.appendChild(size)
+            item.appendChild(line.cloneNode())
             item.appendChild(tags)
+            prev.appendChild(item)
         }
         const preview = async (input) => {
             const prev = document.getElementById('preview')
