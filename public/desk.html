@@ -48,6 +48,22 @@
                 i.src = URL.createObjectURL(file)
             })
         }
+        const aud = (file) => {
+            return new Promise((resolve) => {
+                const a = new Audio()
+                a.onload = () => resolve(true)
+                a.onerror = () => resolve(false)
+                a.src = URL.createObjectURL(file)
+            })
+        }
+        const vid = (file) => {
+            return new Promise((resolve) => {
+                const v = document.createElement('video')
+                v.onload = () => resolve(true)
+                v.onerror = () => resolve(false)
+                v.src = URL.createObjectURL(file)
+            })
+        }
         const item = async (file) => {
             const nf = new Intl.NumberFormat('en-US')
             const line = document.createElement('br')
@@ -62,7 +78,13 @@
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
             if (await img(file)) {
-                tags.textContent = 'img,'
+                tags.textContent = 'web image,'
+            }
+            if (await aud(file)) {
+                tags.textContent = 'web audio,'
+            }
+            if (await vid(file)) {
+                tags.textContent = 'web video,'
             }
             item.appendChild(hr)
             item.appendChild(name)
