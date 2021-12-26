@@ -93,14 +93,14 @@
             size.textContent = nf.format(file.size) + ' bytes'
             const data = await read(file)
             if (data) {
+                if (await vid(data)) {
+                    tags.textContent = 'web video'
+                }
                 if (await img(data)) {
                     tags.textContent = 'web image'
                 }
                 if (await aud(data)) {
                     tags.textContent = 'web audio'
-                }
-                if (await vid(data)) {
-                    tags.textContent = 'web video'
                 }
             }
             item.appendChild(hr)
