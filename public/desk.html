@@ -93,14 +93,11 @@
             if (await img(file)) {
                 tags.textContent = 'web image'
             }
-            else if (await aud(file)) {
+            if (await aud(file)) {
                 tags.textContent = 'web audio'
             }
-            else if (await vid(file)) {
+            if (await vid(file)) {
                 tags.textContent = 'web video'
-            }
-            else {
-                tags.textContent = 'not web'
             }
             item.appendChild(hr)
             item.appendChild(name)
