@@ -6,6 +6,8 @@ const User = use('App/Models/User')
 const Token = use('App/Models/Token')
 const uuid = use('uuid')
 
+const path = '/home/serv/uploads'
+
 class MainController {
     alive() {
         return {
@@ -24,7 +26,7 @@ class MainController {
     }
     async files({ auth }) {
         if (auth.user) {
-            const files = await fs.promises.readdir('/home/serv/uploads')
+            const files = await fs.promises.readdir(path)
             return files
         } else {
             response.status(401)
@@ -84,7 +86,6 @@ class MainController {
         response.redirect('/')
     }
     async upload({ auth, request, response }) {
-        const path = '/home/serv/uploads'
         let uploads = request.files('uploads').uploads
         if (auth.user && uploads) {
             if (!uploads.length) {
@@ -94,8 +95,7 @@ class MainController {
             for (const file of uploads) {
                 const name = uuid.v4() + '.' + file.extname
                 await file.move(path, {
-                    name: name,
-                    overwrite: true
+                    name: name
                 })
             }
         } else {
