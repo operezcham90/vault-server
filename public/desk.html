@@ -40,6 +40,14 @@
             const input = document.getElementById('uploads')
             input.click()
         }
+        const img = (file) => {
+            new Promise((resolve) => {
+                const i = new Image()
+                i.onload = () => resolve(true)
+                i.onerror = () => resolve(false)
+                i.src = URL.createObjectURL(file)
+            })
+        }
         const item = async (file) => {
             const nf = new Intl.NumberFormat('en-US')
             const line = document.createElement('br')
@@ -47,13 +55,15 @@
             const name = document.createElement('kbd')
             const type = document.createElement('kbd')
             const size = document.createElement('kbd')
+            const tags = document.createElement('kbd')
             const hr = document.createElement('hr')
             const prev = document.getElementById('preview')
-            const img = document.createElement('img')
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
-            img.src = URL.createObjectURL(file)
+            if (img(file)) {
+                tags.textContent += 'image,'
+            }
             prev.appendChild(item)
             item.appendChild(hr)
             item.appendChild(name)
