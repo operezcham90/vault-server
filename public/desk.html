@@ -61,7 +61,7 @@
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
-            if (img(file)) {
+            if (await img(file)) {
                 tags.textContent += 'image,'
             }
             prev.appendChild(item)
