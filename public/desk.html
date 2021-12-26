@@ -48,33 +48,33 @@
                 reader.readAsDataURL(file);
             })
         }
-        const img = (file) => {
+        const img = (data) => {
             return new Promise((resolve) => {
                 const i = new Image()
                 i.onload = () => resolve(true)
                 i.onerror = () => resolve(false)
                 document.body.appendChild(i)
-                i.src = URL.createObjectURL(file)
+                i.src = data
             })
         }
-        const aud = (file) => {
+        const aud = (data) => {
             return new Promise((resolve) => {
                 const a = new Audio()
                 a.onload = () => resolve(true)
                 a.onerror = () => resolve(false)
+                a.controls = true
                 document.body.appendChild(a)
-                a.src = URL.createObjectURL(file)
-                a.load()
+                a.src = data
             })
         }
-        const vid = (file) => {
+        const vid = (data) => {
             return new Promise((resolve) => {
                 const v = document.createElement('video')
                 v.onload = () => resolve(true)
                 v.onerror = () => resolve(false)
+                v.controls = true
                 document.body.appendChild(v)
-                v.src = URL.createObjectURL(file)
-                v.load()
+                v.src = data
             })
         }
         const item = async (file) => {
@@ -90,14 +90,17 @@
             name.textContent = file.name
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
-            if (await img(file)) {
-                tags.textContent = 'web image'
-            }
-            if (await aud(file)) {
-                tags.textContent = 'web audio'
-            }
-            if (await vid(file)) {
-                tags.textContent = 'web video'
+            const data = await read(file)
+            if (data) {
+                if (await img(data)) {
+                    tags.textContent = 'web image'
+                }
+                if (await aud(data)) {
+                    tags.textContent = 'web audio'
+                }
+                if (await vid(data)) {
+                    tags.textContent = 'web video'
+                }
             }
             item.appendChild(hr)
             item.appendChild(name)
