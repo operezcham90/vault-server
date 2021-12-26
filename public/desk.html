@@ -78,13 +78,16 @@
             type.textContent = file.type
             size.textContent = nf.format(file.size) + ' bytes'
             if (await img(file)) {
-                tags.textContent = 'web image,'
+                tags.textContent = 'web image'
             }
-            if (await aud(file)) {
-                tags.textContent = 'web audio,'
+            else if (await aud(file)) {
+                tags.textContent = 'web audio'
             }
-            if (await vid(file)) {
-                tags.textContent = 'web video,'
+            else if (await vid(file)) {
+                tags.textContent = 'web video'
+            }
+            else {
+                tags.textContent = 'not web'
             }
             item.appendChild(hr)
             item.appendChild(name)
