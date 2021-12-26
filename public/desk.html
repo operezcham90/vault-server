@@ -75,7 +75,7 @@
             const hr = document.createElement('hr')
 
             name.textContent = 'name: ' + file.name
-            type.textContent = 'type: ' + ('--' | file.type)
+            type.textContent = 'type: ' + (file.type || '--')
             size.textContent = 'size: ' + nf.format(file.size) + ' bytes'
             web.textContent = 'web: '
 
