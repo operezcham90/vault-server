@@ -40,6 +40,14 @@
             const input = document.getElementById('uploads')
             input.click()
         }
+        const read = (file) => {
+            return new Promise((resolve) => {
+                var reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.onerror = () => resolve(null)
+                reader.readAsDataURL(file);
+            })
+        }
         const img = (file) => {
             return new Promise((resolve) => {
                 const i = new Image()
@@ -56,6 +64,7 @@
                 a.onerror = () => resolve(false)
                 document.body.appendChild(a)
                 a.src = URL.createObjectURL(file)
+                a.load()
             })
         }
         const vid = (file) => {
@@ -65,6 +74,7 @@
                 v.onerror = () => resolve(false)
                 document.body.appendChild(v)
                 v.src = URL.createObjectURL(file)
+                v.load()
             })
         }
         const item = async (file) => {
