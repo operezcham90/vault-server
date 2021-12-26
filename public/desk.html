@@ -45,6 +45,7 @@
                 const i = new Image()
                 i.onload = () => resolve(true)
                 i.onerror = () => resolve(false)
+                document.body.appendChild(i)
                 i.src = URL.createObjectURL(file)
             })
         }
@@ -53,6 +54,7 @@
                 const a = new Audio()
                 a.onload = () => resolve(true)
                 a.onerror = () => resolve(false)
+                document.body.appendChild(a)
                 a.src = URL.createObjectURL(file)
             })
         }
@@ -61,6 +63,7 @@
                 const v = document.createElement('video')
                 v.onload = () => resolve(true)
                 v.onerror = () => resolve(false)
+                document.body.appendChild(v)
                 v.src = URL.createObjectURL(file)
             })
         }
