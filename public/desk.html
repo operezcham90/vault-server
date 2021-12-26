@@ -56,11 +56,9 @@
         }
         const validate = (data, media) => {
             const display = document.getElementById(media)
-            if (!display) {
-                return null
-            }
             return new Promise((resolve) => {
                 display.onloadeddata = () => resolve(true)
+                display.onload = () => resolve(true)
                 display.onerror = () => resolve(false)
                 display.src = data
             })
