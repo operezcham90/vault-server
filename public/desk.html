@@ -60,7 +60,7 @@
         const aud = (data) => {
             return new Promise((resolve) => {
                 const a = new Audio()
-                a.onload = () => resolve(true)
+                a.onloadeddata = () => resolve(true)
                 a.onerror = () => resolve(false)
                 a.controls = true
                 document.body.appendChild(a)
@@ -70,7 +70,7 @@
         const vid = (data) => {
             return new Promise((resolve) => {
                 const v = document.createElement('video')
-                v.onload = () => resolve(true)
+                v.onloadeddata = () => resolve(true)
                 v.onerror = () => resolve(false)
                 v.controls = true
                 document.body.appendChild(v)
