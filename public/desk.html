@@ -39,8 +39,8 @@
         <input type="file" class="hid" name="uploads" id="uploads" multiple onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
         <input type="submit" value="Upload 💾">
+        <div id="preview"></div>
     </form>
-    <div id="preview"></div>
     <script>
         const search = () => {
             const input = document.getElementById('uploads')
@@ -72,8 +72,10 @@
             const type = document.createElement('kbd')
             const size = document.createElement('kbd')
             const web = document.createElement('kbd')
+            const url = document.createElement('a')
             const hr = document.createElement('hr')
 
+            url.textContent = '👁'
             name.textContent = 'name: ' + file.name
             type.textContent = 'type: ' + (file.type || '--')
             size.textContent = 'size: ' + nf.format(file.size) + ' bytes'
@@ -81,6 +83,7 @@
 
             const data = await read(file)
             if (data) {
+                url.href = data
                 web.textContent += 'text;'
                 if (await validate(data, 'image')) {
                     web.textContent += 'image;'
