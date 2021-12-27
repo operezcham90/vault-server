@@ -100,7 +100,7 @@ class MainController {
                 await file.move(path, {
                     name: id + '/file.' + file.extname
                 })
-                fs.writeFileSync(path + '/' + id + 'tags.txt', list);
+                fs.writeFileSync(path + '/' + id + '/tags.txt', list);
             }
         } else {
             response.status(401)
