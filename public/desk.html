@@ -67,9 +67,8 @@
             url.textContent = 'Inspect 👁'
             url.target = '_blank'
             const data = URL.createObjectURL(file)
-            if (data) {
-                url.href = data
-            }
+            url.href = data
+            item.appendChild(url)
 
             prev.appendChild(item)
         }
