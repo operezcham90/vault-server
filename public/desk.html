@@ -46,15 +46,6 @@
             const input = document.getElementById('uploads')
             input.click()
         }
-        const read = (file) => {
-            /*return new Promise((resolve) => {
-                const r = new FileReader()
-                r.onloadend = () => resolve(r.result)
-                r.onerror = () => resolve(null)
-                r.readAsDataURL(file);
-            })*/
-            return URL.createObjectURL(file)
-        }
         const validate = (data, media) => {
             const display = document.getElementById(media)
             return new Promise((resolve) => {
@@ -76,13 +67,13 @@
             const url = document.createElement('a')
             const hr = document.createElement('hr')
 
-            url.textContent = '👁'
-            name.textContent = 'name: ' + file.name
-            type.textContent = 'type: ' + (file.type || '--')
-            size.textContent = 'size: ' + nf.format(file.size) + ' bytes'
-            web.textContent = 'web: '
+            url.textContent = 'Inspect 👁'
+            name.textContent = 'Name: ' + file.name
+            type.textContent = 'Type: ' + (file.type || '--')
+            size.textContent = 'Size: ' + nf.format(file.size) + ' bytes'
+            web.textContent = 'Web: '
 
-            const data = await read(file)
+            const data = URL.createObjectURL(file)
             if (data) {
                 url.href = data
                 web.textContent += 'text;'
@@ -105,6 +96,7 @@
             item.appendChild(size)
             item.appendChild(line.cloneNode())
             item.appendChild(web)
+            item.appendChild(line.cloneNode())
             item.appendChild(url)
             prev.appendChild(item)
         }
