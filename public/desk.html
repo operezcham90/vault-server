@@ -48,22 +48,14 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
-            const name = document.createElement('textarea')
-            name.textContent = file.name
-            name.disabled = true
-            name.rows = 1
-            item.appendChild(name)
-
-            const type = document.createElement('textarea')
-            type.textContent = file.type || '--'
-            type.disabled = true
-            type.rows = 1
-            item.appendChild(type)
-
             const size = document.createElement('input')
             size.value = nf.format(file.size) + ' bytes'
             size.disabled = true
             item.appendChild(size)
+
+            const label = document.createElement('label')
+            label.textContent = 'Tags (used to search)'
+            item.appendChild(label)
 
             const tags = document.createElement('textarea')
             tags.textContent = file.name + ', ' + file.type + ', '
