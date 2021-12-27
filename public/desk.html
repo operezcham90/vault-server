@@ -66,16 +66,22 @@
             const web = document.createElement('kbd')
             const url = document.createElement('a')
             const hr = document.createElement('hr')
+            const view = document.createElement('object')
 
             url.textContent = 'Inspect 👁'
+            url.target = '_blank'
             name.textContent = 'Name: ' + file.name
             type.textContent = 'Type: ' + (file.type || '--')
             size.textContent = 'Size: ' + nf.format(file.size) + ' bytes'
             web.textContent = 'Web: '
+            view.type = file.type
+            view.width = 250
+            view.height = 200
 
             const data = URL.createObjectURL(file)
             if (data) {
                 url.href = data
+                view.data = data
                 web.textContent += 'text;'
                 if (await validate(data, 'image')) {
                     web.textContent += 'image;'
@@ -98,6 +104,8 @@
             item.appendChild(web)
             item.appendChild(line.cloneNode())
             item.appendChild(url)
+            item.appendChild(line.cloneNode())
+            item.appendChild(view)
             prev.appendChild(item)
         }
         const preview = async (input) => {
