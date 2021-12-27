@@ -28,11 +28,6 @@
     </form>
     <h2>Upload Files</h2>
     <hr>
-    <div class="hid">
-        <img id="image">
-        <video id="video"></video>
-        <audio id="audio"></audio>
-    </div>
     <form method="post" action="upload" enctype="multipart/form-data">
         <input type="hidden" name="_csrf">
         <input type="hidden" name="data">
@@ -46,66 +41,36 @@
             const input = document.getElementById('uploads')
             input.click()
         }
-        const validate = (data, media) => {
-            const display = document.getElementById(media)
-            return new Promise((resolve) => {
-                display.onloadeddata = () => resolve(true)
-                display.onload = () => resolve(true)
-                display.onerror = () => resolve(false)
-                display.src = data
-            })
-        }
         const item = async (file) => {
             const nf = new Intl.NumberFormat('en-US')
             const prev = document.getElementById('preview')
-            const line = document.createElement('br')
             const item = document.createElement('div')
-            const name = document.createElement('kbd')
-            const type = document.createElement('kbd')
-            const size = document.createElement('kbd')
-            const web = document.createElement('kbd')
-            const url = document.createElement('a')
             const hr = document.createElement('hr')
-            const view = document.createElement('object')
+            item.appendChild(hr)
 
+            const name = document.createElement('input')
+            name.value = file.name
+            name.disabled = true
+            item.appendChild(name)
+
+            const type = document.createElement('input')
+            type.value = file.type || '--'
+            type.disabled = true
+            item.appendChild(type)
+
+            const size = document.createElement('input')
+            size.value = nf.format(file.size) + ' bytes'
+            size.disabled = true
+            item.appendChild(size)
+
+            const url = document.createElement('a')
             url.textContent = 'Inspect 👁'
             url.target = '_blank'
-            name.textContent = 'Name: ' + file.name
-            type.textContent = 'Type: ' + (file.type || '--')
-            size.textContent = 'Size: ' + nf.format(file.size) + ' bytes'
-            web.textContent = 'Web: '
-            view.type = file.type
-            view.width = 250
-            view.height = 200
-
             const data = URL.createObjectURL(file)
             if (data) {
                 url.href = data
-                view.data = data
-                web.textContent += 'text;'
-                if (await validate(data, 'image')) {
-                    web.textContent += 'image;'
-                }
-                if (await validate(data, 'audio')) {
-                    web.textContent += 'audio;'
-                }
-                if (await validate(data, 'video')) {
-                    web.textContent += 'video;'
-                }
             }
 
-            item.appendChild(hr)
-            item.appendChild(name)
-            item.appendChild(line.cloneNode())
-            item.appendChild(type)
-            item.appendChild(line.cloneNode())
-            item.appendChild(size)
-            item.appendChild(line.cloneNode())
-            item.appendChild(web)
-            item.appendChild(line.cloneNode())
-            item.appendChild(url)
-            item.appendChild(line.cloneNode())
-            item.appendChild(view)
             prev.appendChild(item)
         }
         const preview = async (input) => {
