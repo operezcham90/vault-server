@@ -65,11 +65,11 @@
             size.disabled = true
             item.appendChild(size)
 
-            const url = document.createElement('a')
-            url.textContent = 'Inspect'
-            url.target = '_blank'
+            const url = document.createElement('input')
+            url.type = 'button'
+            url.value = 'Inspect 👁'
             const data = URL.createObjectURL(file)
-            url.href = data
+            url.onclick = window.open(data, '_blank')
             item.appendChild(url)
 
             prev.appendChild(item)
