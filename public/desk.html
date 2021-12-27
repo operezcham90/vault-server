@@ -51,12 +51,13 @@
             const name = document.createElement('textarea')
             name.textContent = file.name
             name.disabled = true
-            name.cols = 1
+            name.rows = 1
             item.appendChild(name)
 
-            const type = document.createElement('input')
-            type.value = file.type || '--'
+            const type = document.createElement('textarea')
+            type.textContent = file.type || '--'
             type.disabled = true
+            type.rows = 1
             item.appendChild(type)
 
             const size = document.createElement('input')
