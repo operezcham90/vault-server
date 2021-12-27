@@ -87,16 +87,20 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         let uploads = request.files('uploads').uploads
+        let { tags } = request.all()
         if (auth.user && uploads) {
             if (!uploads.length) {
                 uploads = []
                 uploads.push(request.files('uploads').uploads)
             }
-            for (const file of uploads) {
-                const name = uuid.v4() + '.' + file.extname
+            for (let i = 0; i < uploads.length; i++) {
+                const file = uploads[i]
+                const list = tags[i]
+                const id = uuid.v4()
                 await file.move(path, {
-                    name: name
+                    name: id + '/file.' + file.extname
                 })
+                fs.writeFileSync(path + '/' + id + 'tags.txt', list);
             }
         } else {
             response.status(401)

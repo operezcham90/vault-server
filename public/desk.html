@@ -48,11 +48,6 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
-            const size = document.createElement('input')
-            size.value = nf.format(file.size) + ' bytes'
-            size.disabled = true
-            item.appendChild(size)
-
             const label = document.createElement('label')
             label.textContent = 'Tags (used to search)'
             item.appendChild(label)
@@ -62,6 +57,11 @@
             tags.name = 'tags[]'
             tags.rows = 2
             item.appendChild(tags)
+
+            const size = document.createElement('input')
+            size.value = nf.format(file.size) + ' bytes'
+            size.disabled = true
+            item.appendChild(size)
 
             const url = document.createElement('input')
             url.type = 'button'
