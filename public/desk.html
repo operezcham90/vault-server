@@ -47,12 +47,13 @@
             input.click()
         }
         const read = (file) => {
-            return new Promise((resolve) => {
+            /*return new Promise((resolve) => {
                 const r = new FileReader()
                 r.onloadend = () => resolve(r.result)
                 r.onerror = () => resolve(null)
                 r.readAsDataURL(file);
-            })
+            })*/
+            return URL.createObjectURL(file)
         }
         const validate = (data, media) => {
             const display = document.getElementById(media)
