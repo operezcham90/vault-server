@@ -69,7 +69,7 @@
             url.type = 'button'
             url.value = 'Inspect 👁'
             const data = URL.createObjectURL(file)
-            url.onclick = window.open(data, '_blank')
+            url.onclick = () => { window.open(data, '_blank') }
             item.appendChild(url)
 
             prev.appendChild(item)
