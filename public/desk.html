@@ -48,9 +48,10 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
-            const name = document.createElement('input')
-            name.value = file.name
+            const name = document.createElement('textarea')
+            name.textContent = file.name
             name.disabled = true
+            name.cols = 1
             item.appendChild(name)
 
             const type = document.createElement('input')
@@ -64,7 +65,7 @@
             item.appendChild(size)
 
             const url = document.createElement('a')
-            url.textContent = 'Inspect 👁'
+            url.textContent = 'Inspect'
             url.target = '_blank'
             const data = URL.createObjectURL(file)
             url.href = data
