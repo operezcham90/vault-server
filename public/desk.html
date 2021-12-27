@@ -65,6 +65,12 @@
             size.disabled = true
             item.appendChild(size)
 
+            const tags = document.createElement('textarea')
+            tags.textContent = file.name + ', ' + file.type + ', '
+            tags.name = 'tags[]'
+            tags.rows = 2
+            item.appendChild(tags)
+
             const url = document.createElement('input')
             url.type = 'button'
             url.value = 'Inspect 👁'
