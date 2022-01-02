@@ -43,6 +43,9 @@
         }
         const item = async (file) => {
             const item = document.createElement('div')
+            const prev = document.getElementById('preview')
+            prev.appendChild(item)
+
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
@@ -64,15 +67,10 @@
 
             const url = document.createElement('input')
             const data = URL.createObjectURL(file)
-            url.href = data
             url.type = 'button'
             url.value = 'Inspect 👁'
-            url.target = '_blank'
-            //url.onclick = () => { window.open(data, '_blank') }
+            url.onclick = () => { window.open(data, '_blank') }
             item.appendChild(url)
-
-            const prev = document.getElementById('preview')
-            prev.appendChild(item)
         }
         const preview = async (input) => {
             const prev = document.getElementById('preview')
