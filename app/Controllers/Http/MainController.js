@@ -97,16 +97,15 @@ class MainController {
             for (let i = 0; i < uploads.length; i++) {
                 const id = uuid.v4()
                 const file = uploads[i]
-                const name = id + '/f.' + file.extname
-                await file.move(path, {
-                    name: name
-                })
-                const buff = fs.readFileSync(file.filePath)
                 const sum = crypto.createHash('sha256')
+                const buff = fs.readFileSync(file.filePath)
                 sum.update(buff)
                 const hex = sum.digest('hex')
                 fs.writeFileSync(path + '/' + id + '/t.txt', tags[i])
                 fs.writeFileSync(path + '/' + id + '/d.txt', hex)
+                await file.move(path, {
+                    name: id + '/f.' + file.extname
+                })
             }
         } else {
             response.status(401)
