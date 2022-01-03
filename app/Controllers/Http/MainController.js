@@ -95,9 +95,9 @@ class MainController {
                 uploads.push(request.files('uploads').uploads)
             }
             for (let i = 0; i < uploads.length; i++) {
+                const id = uuid.v4()
                 const file = uploads[i]
                 const name = id + '/f.' + file.extname
-                const id = uuid.v4()
                 await file.move(path, {
                     name: name
                 })
