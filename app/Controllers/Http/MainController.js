@@ -7,8 +7,6 @@ const Token = use('App/Models/Token')
 const uuid = use('uuid')
 const crypto = use('crypto')
 
-const path = '/home/serv/uploads'
-
 class MainController {
     alive() {
         return {
@@ -27,6 +25,7 @@ class MainController {
     }
     async files({ auth }) {
         if (auth.user) {
+            const path = '/home/serv/uploads'
             const files = await fs.promises.readdir(path)
             return files
         } else {
@@ -97,6 +96,7 @@ class MainController {
             for (let i = 0; i < uploads.length; i++) {
                 const id = uuid.v4()
                 const file = uploads[i]
+                const path = '/home/serv/uploads'
                 const sum = crypto.createHash('sha256')
                 const buff = fs.readFileSync(file.filePath)
                 sum.update(buff)
