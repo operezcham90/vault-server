@@ -5,6 +5,7 @@ const Env = use('Env')
 const User = use('App/Models/User')
 const Token = use('App/Models/Token')
 const uuid = use('uuid')
+const crypto = use('crypto')
 
 const path = '/home/serv/uploads'
 
@@ -95,12 +96,17 @@ class MainController {
             }
             for (let i = 0; i < uploads.length; i++) {
                 const file = uploads[i]
-                const list = tags[i]
+                const name = id + '/f.' + file.extname
                 const id = uuid.v4()
                 await file.move(path, {
-                    name: id + '/file.' + file.extname
+                    name: name
                 })
-                fs.writeFileSync(path + '/' + id + '/tags.txt', list);
+                const buff = fs.readFileSync(file.filePath)
+                const sum = crypto.createHash('sha256')
+                sum.update(buff)
+                const hex = sum.digest('hex')
+                fs.writeFileSync(path + '/' + id + '/t.txt', tags[i])
+                fs.writeFileSync(path + '/' + id + '/d.txt', hex)
             }
         } else {
             response.status(401)

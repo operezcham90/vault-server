@@ -42,8 +42,8 @@
             input.click()
         }
         const item = async (file) => {
-            const item = document.createElement('div')
             const prev = document.getElementById('preview')
+            const item = document.createElement('div')
             prev.appendChild(item)
 
             const hr = document.createElement('hr')
@@ -59,8 +59,8 @@
             tags.rows = 2
             item.appendChild(tags)
 
-            const size = document.createElement('input')
             const en = new Intl.NumberFormat('en-US')
+            const size = document.createElement('input')
             size.value = en.format(file.size) + ' bytes'
             size.disabled = true
             item.appendChild(size)
