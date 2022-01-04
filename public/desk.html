@@ -67,7 +67,10 @@
             item.appendChild(label)
 
             const tags = document.createElement('textarea')
-            tags.textContent = file.name + ', ' + file.type
+            let text = file.name + ' ' + file.type
+            text = text.toLowerCase()
+            text = text.replace(/[^\w\d ]/g, '')
+            tags.textContent = text
             tags.name = 'tags[]'
             tags.rows = 2
             item.appendChild(tags)
