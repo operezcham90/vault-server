@@ -99,8 +99,10 @@ class MainController {
                 const buff = fs.readFileSync(uploads[i].tmpPath)
                 sum.update(buff)
                 const hex = sum.digest('hex')
-                fs.writeFileSync('/home/serv/uploads/' + id + '/t.txt', tags[i])
-                fs.writeFileSync('/home/serv/uploads/' + id + '/d.txt', hex)
+                const base = '/home/serv/uploads/' + id
+                fs.mkdirSync(base)
+                fs.writeFileSync(base + '/t.txt', tags[i])
+                fs.writeFileSync(base + '/d.txt', hex)
             }
         } else {
             response.status(401)
