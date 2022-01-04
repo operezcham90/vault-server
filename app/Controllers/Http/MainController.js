@@ -103,9 +103,9 @@ class MainController {
                 const hex = sum.digest('hex')
                 fs.writeFileSync(path + '/' + id + '/t.txt', tags[i])
                 fs.writeFileSync(path + '/' + id + '/d.txt', hex)
-                await file.move(path, {
+                /*await file.move(path, {
                     name: id + '/f.' + file.extname
-                })
+                })*/
             }
         } else {
             response.status(401)
