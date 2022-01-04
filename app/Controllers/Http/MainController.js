@@ -96,7 +96,7 @@ class MainController {
             for (let i = 0; i < uploads.length; i++) {
                 const id = uuid.v4()
                 const sum = crypto.createHash('sha256')
-                const buff = fs.readFileSync(uploads[i].filePath)
+                const buff = fs.readFileSync(uploads[i].tmpPath)
                 sum.update(buff)
                 const hex = sum.digest('hex')
                 fs.writeFileSync('/home/serv/uploads/' + id + '/t.txt', tags[i])
