@@ -48,11 +48,8 @@
         }
         const find = async () => {
             const tags = document.getElementById('tags').value
-            const data = new FormData()
-            data.append('tags', tags)
-            const response = await fetch('/find', {
-                body: data
-            })
+            const url = '/find?tags=' + encodeURIComponent(tags)
+            const response = await fetch(url)
             const ids = await response.json()
             const prev = document.getElementById('preview_1')
             prev.innerText = JSON.stringify(ids)
