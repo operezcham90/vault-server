@@ -23,15 +23,6 @@ class MainController {
         }
         return state
     }
-    async files({ auth }) {
-        if (auth.user) {
-            const path = '/home/serv/uploads'
-            const files = await fs.promises.readdir(path)
-            return files
-        } else {
-            response.status(401)
-        }
-    }
     async login({ auth, request, response }) {
         const { email, password } = request.all()
         try {
@@ -87,7 +78,7 @@ class MainController {
     }
     async upload({ auth, request, response }) {
         let uploads = request.files().uploads
-        let { tags } = request.all()
+        const { tags } = request.all()
         if (auth.user && uploads) {
             if (!uploads.length) {
                 uploads = []
@@ -100,14 +91,26 @@ class MainController {
                 sum.update(buff)
                 const hex = sum.digest('hex')
                 const base = '/home/serv/uploads/' + id
-                fs.mkdirSync(base)
-                fs.writeFileSync(base + '/t.txt', tags[i])
-                fs.writeFileSync(base + '/d.txt', hex)
+                await fs.promises.mkdir(base)
+                await fs.promises.writeFile(base + '/d.txt', hex)
+                await fs.promises.writeFile(base + '/t.txt', tags[i])
+                await fs.promises.rename(uploads[i].tmpPath, base + '/f.' + uploads[i].extname)
             }
         } else {
             response.status(401)
         }
         response.redirect('/')
+    }
+    async find({ auth, request, response }) {
+        let { tags } = request.all()
+        if (auth.user && tags) {
+            tags = tags.split(' ')
+            const path = '/home/serv/uploads'
+            const ids = await fs.promises.readdir(path)
+            return ids
+        } else {
+            response.status(401)
+        }
     }
 }
 

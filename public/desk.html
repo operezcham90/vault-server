@@ -34,15 +34,31 @@
         <input type="file" class="hid" name="uploads" id="uploads" multiple onchange="preview(this)">
         <input type="button" value="Search 📂" onclick="search()">
         <input type="submit" value="Upload 💾">
-        <div id="preview"></div>
+        <div id="preview_0"></div>
     </form>
+    <h2>Find Files</h2>
+    <hr>
+    <textarea rows="2" id="tags" placeholder="tags used to search">
+    <input type="button" value="Find 🔍" onclick="find()">
+    <div id="preview_1"></div>
     <script>
         const search = () => {
             const input = document.getElementById('uploads')
             input.click()
         }
+        const find = () => {
+            const tags = document.getElementById('tags').value
+            const data = new FormData()
+            data.append('tags', tags)
+            const response = await fetch('/find', {
+                body: data
+            })
+            const ids = await response.json()
+            const prev = document.getElementById('preview_1')
+            prev.innerText = JSON.stringify(ids)
+        }
         const item = async (file) => {
-            const prev = document.getElementById('preview')
+            const prev = document.getElementById('preview_0')
             const item = document.createElement('div')
             prev.appendChild(item)
 
@@ -73,7 +89,7 @@
             item.appendChild(url)
         }
         const preview = async (input) => {
-            const prev = document.getElementById('preview')
+            const prev = document.getElementById('preview_0')
             prev.innerText = ''
             for (const file of input.files) {
                 await item(file)
