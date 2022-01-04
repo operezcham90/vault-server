@@ -42,6 +42,9 @@
     <input type="button" value="Find 🔍" onclick="find()">
     <div id="preview_1"></div>
     <script>
+        const tagger = (value, index, self) => {
+            return self.indexOf(value) === index && value !== '';
+        }
         const search = () => {
             const input = document.getElementById('uploads')
             input.click()
@@ -69,8 +72,11 @@
             const tags = document.createElement('textarea')
             let text = file.name + ' ' + file.type
             text = text.toLowerCase()
-            text = text.replace(/[^\w\d ]/g, '')
-            tags.textContent = text
+            text = text.replace(/[^\w\d ]/g, ' ')
+            text = text.split(' ')
+            text = text.filter(tagger)
+            text = text.sort()
+            tags.textContent = text.join(' ')
             tags.name = 'tags[]'
             tags.rows = 2
             item.appendChild(tags)
