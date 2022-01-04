@@ -86,26 +86,21 @@ class MainController {
         response.redirect('/')
     }
     async upload({ auth, request, response }) {
-        let uploads = request.files('uploads').uploads
+        let uploads = request.files().uploads
         let { tags } = request.all()
         if (auth.user && uploads) {
             if (!uploads.length) {
                 uploads = []
-                uploads.push(request.files('uploads').uploads)
+                uploads.push(request.files().uploads)
             }
             for (let i = 0; i < uploads.length; i++) {
                 const id = uuid.v4()
-                const file = uploads[i]
-                const path = '/home/serv/uploads'
                 const sum = crypto.createHash('sha256')
-                const buff = fs.readFileSync(file.filePath)
+                const buff = fs.readFileSync(uploads[i].filePath)
                 sum.update(buff)
                 const hex = sum.digest('hex')
-                fs.writeFileSync(path + '/' + id + '/t.txt', tags[i])
-                fs.writeFileSync(path + '/' + id + '/d.txt', hex)
-                /*await file.move(path, {
-                    name: id + '/f.' + file.extname
-                })*/
+                fs.writeFileSync('/home/serv/uploads/' + id + '/t.txt', tags[i])
+                fs.writeFileSync('/home/serv/uploads/' + id + '/d.txt', hex)
             }
         } else {
             response.status(401)
