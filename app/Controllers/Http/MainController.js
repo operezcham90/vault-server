@@ -128,8 +128,8 @@ class MainController {
             }
             const path = '/home/serv/uploads'
             const ids = await fs.promises.readdir(path)
-            const files = []
-            for (const id in ids) {
+            const files = ids
+            /*for (const id in ids) {
                 const t = await fs.promises.readFile(path + '/' + id + '/t.txt', 'utf8')
                 const d = await fs.promises.readFile(path + '/' + id + '/d.txt', 'utf8')
                 const file = {
@@ -138,7 +138,7 @@ class MainController {
                     tags: t
                 }
                 files.push(file)
-            }
+            }*/
             return files
         } else {
             response.status(401)
