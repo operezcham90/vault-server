@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <title>Vault Server 📦</title>
+    <style>
+        .hid {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get" action="/">
+        <input type="submit" value="Root 🌳">
+    </form>
+    <h1>Upload</h1>
+    <hr>
+    <form method="post" action="logout">
+        <input type="hidden" name="_csrf">
+        <input type="text" id="user" disabled>
+        <input type="submit" value="Logout 🔒">
+    </form>
+    <h2>Search on Device</h2>
+    <hr>
+    <form method="post" action="upload" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf">
+        <input type="hidden" name="data">
+        <input type="file" class="hid" name="uploads" id="uploads" multiple onchange="preview(this)">
+        <input type="button" value="Search 📂" onclick="search()">
+        <input type="submit" value="Upload 💾">
+        <div id="preview"></div>
+    </form>
+    <script>
+        const search = () => {
+            const input = document.getElementById('uploads')
+            input.click()
+        }
+        const item = async (file) => {
+            const prev = document.getElementById('preview')
+            const item = document.createElement('div')
+            prev.appendChild(item)
+
+            const hr = document.createElement('hr')
+            item.appendChild(hr)
+
+            const en = new Intl.NumberFormat('en-US')
+            const size = document.createElement('input')
+            size.value = en.format(file.size) + ' bytes'
+            size.disabled = true
+            item.appendChild(size)
+
+            const url = document.createElement('input')
+            const data = URL.createObjectURL(file)
+            url.type = 'button'
+            url.value = 'Inspect 👁'
+            url.onclick = () => { window.open(data, '_blank') }
+            item.appendChild(url)
+
+            const label = document.createElement('label')
+            label.textContent = 'Tags'
+            item.appendChild(label)
+
+            const tags = document.createElement('textarea')
+            let text = file.name
+            if (file.type) {
+                text += ' ' + file.type
+            }
+            if (file.lastModified) {
+                const date = new Date(file.lastModified)
+                text += ' ' + date.getFullYear()
+            }
+            let words = text.toLowerCase().replace(/[^\w\d ]/g, ' ').split(' ')
+            const filter = []
+            for (let i = 0; i < words.length; i++) {
+                if (words.indexOf(words[i]) === i && words[i] !== '') {
+                    filter.push(words[i])
+                }
+            }
+            words = filter.sort()
+            tags.textContent = words.join(' ')
+            tags.name = 'tags[]'
+            tags.rows = 2
+            item.appendChild(tags)
+        }
+        const preview = async (input) => {
+            const prev = document.getElementById('preview')
+            prev.innerText = ''
+            for (const file of input.files) {
+                await item(file)
+            }
+        }
+        window.onload = async () => {
+            const response = await fetch('/state')
+            const { email, token } = await response.json()
+            if (!email) {
+                window.location.replace('/login.html')
+            }
+            document.getElementById('user').value = email
+            const elements = document.getElementsByName('_csrf')
+            for (const element of elements) {
+                element.value = token
+            }
+        }
+    </script>
+</body>
+
+</html>
