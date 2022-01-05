@@ -12,7 +12,7 @@ class File {
         hash.update(buff)
         const id = hash.digest('hex')
         const path = '/home/serv/uploads/' + id
-        const exists = await fs.promises.exists(path)
+        const exists = fs.existsSync(path)
         if (!exists) {
             await fs.promises.mkdir(path)
             await fs.promises.writeFile(path + '/t.txt', words.join(' '))
