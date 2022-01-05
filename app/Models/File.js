@@ -5,7 +5,7 @@ const fs = use('fs')
 const crypto = use('crypto')
 
 class File {
-    async store(file, tags) {
+    static async store(file, tags) {
         const words = Tags.parse(tags)
         const hash = crypto.createHash('sha256')
         const buff = await fs.promises.readFile(file.tmpPath)
@@ -19,7 +19,7 @@ class File {
             await fs.promises.rename(file.tmpPath, path + '/f.' + file.extname)
         }
     }
-    async search(tags) {
+    static async search(tags) {
         const words = Tags.parse(tags)
         const path = '/home/serv/uploads'
         const ids = await fs.promises.readdir(path)

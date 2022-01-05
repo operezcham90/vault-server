@@ -1,7 +1,7 @@
 'use strict'
 
 class Tags {
-    parse(tags) {
+    static parse(tags) {
         let words = tags.toLowerCase()
         words = words.replace(/[^\w\d ]/g, ' ')
         words = words.split(' ')
