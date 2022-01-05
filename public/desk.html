@@ -36,13 +36,38 @@
     <input type="button" value="Search 🔍" onclick="search()">
     <div id="preview"></div>
     <script>
+        const item = (file) => {
+            const prev = document.getElementById('preview')
+            const item = document.createElement('div')
+            prev.appendChild(item)
+
+            const hr = document.createElement('hr')
+            item.appendChild(hr)
+
+            const id = document.createElement('input')
+            id.value = file.id
+            id.disabled = true
+            item.appendChild(id)
+
+            const label = document.createElement('label')
+            label.textContent = 'Tags'
+            item.appendChild(label)
+
+            const tags = document.createElement('textarea')
+            tags.textContent = file.tags
+            tags.rows = 2
+            item.appendChild(tags)
+        }
         const search = async () => {
             const tags = document.getElementById('tags').value
             const url = '/find?tags=' + encodeURIComponent(tags)
             const response = await fetch(url)
-            const ids = await response.json()
+            const files = await response.json()
             const prev = document.getElementById('preview')
-            prev.innerText = JSON.stringify(ids)
+            prev.innerText = ''
+            for (const file of files) {
+                item(file)
+            }
         }
         window.onload = async () => {
             const response = await fetch('/state')

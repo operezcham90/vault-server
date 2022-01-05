@@ -36,11 +36,11 @@ class File {
                     matches++
                 }
             }
-            if (matches > 0) {
+            if (matches > 0 || !words) {
                 files.push(file)
             }
-            return files
         }
+        return files
     }
 }
 

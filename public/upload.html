@@ -41,7 +41,7 @@
             const input = document.getElementById('uploads')
             input.click()
         }
-        const item = async (file) => {
+        const item = (file) => {
             const prev = document.getElementById('preview')
             const item = document.createElement('div')
             prev.appendChild(item)
@@ -83,7 +83,7 @@
             const prev = document.getElementById('preview')
             prev.innerText = ''
             for (const file of input.files) {
-                await item(file)
+                item(file)
             }
         }
         window.onload = async () => {
