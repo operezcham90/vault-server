@@ -89,9 +89,9 @@ class MainController {
                 if (tags[i]) {
                     words = tags[i].toLowerCase().replace(/[^\w\d ]/g, ' ').split(' ')
                     const filter = []
-                    for (let i = 0; i < words.length; i++) {
-                        if (words.indexOf(words[i]) === i && words[i] !== '') {
-                            filter.push(words[i])
+                    for (let j = 0; j < words.length; j++) {
+                        if (words.indexOf(words[j]) === j && words[j] !== '') {
+                            filter.push(words[j])
                         }
                     }
                     words = filter.sort()
@@ -128,8 +128,8 @@ class MainController {
             }
             const path = '/home/serv/uploads'
             const ids = await fs.promises.readdir(path)
-            const files = ids
-            /*for (const id in ids) {
+            const files = []
+            for (const id of ids) {
                 const t = await fs.promises.readFile(path + '/' + id + '/t.txt', 'utf8')
                 const d = await fs.promises.readFile(path + '/' + id + '/d.txt', 'utf8')
                 const file = {
@@ -138,7 +138,7 @@ class MainController {
                     tags: t
                 }
                 files.push(file)
-            }*/
+            }
             return files
         } else {
             response.status(401)
