@@ -49,19 +49,6 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
-            const en = new Intl.NumberFormat('en-US')
-            const size = document.createElement('input')
-            size.value = en.format(file.size) + ' bytes'
-            size.disabled = true
-            item.appendChild(size)
-
-            const url = document.createElement('input')
-            const data = URL.createObjectURL(file)
-            url.type = 'button'
-            url.value = 'Inspect 👁'
-            url.onclick = () => { window.open(data, '_blank') }
-            item.appendChild(url)
-
             const label = document.createElement('label')
             label.textContent = 'Tags'
             item.appendChild(label)
@@ -78,6 +65,19 @@
                 tags.textContent += ', ' + date.getFullYear()
             }
             item.appendChild(tags)
+
+            const url = document.createElement('input')
+            const data = URL.createObjectURL(file)
+            url.type = 'button'
+            url.value = 'Inspect 👁'
+            url.onclick = () => { window.open(data, '_blank') }
+            item.appendChild(url)
+
+            const en = new Intl.NumberFormat('en-US')
+            const size = document.createElement('input')
+            size.value = en.format(file.size) + ' bytes'
+            size.disabled = true
+            item.appendChild(size)
         }
         const preview = async (input) => {
             const prev = document.getElementById('preview')
