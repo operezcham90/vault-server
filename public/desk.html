@@ -65,7 +65,7 @@
             id.type = 'hidden'
             update.appendChild(id)
 
-            const token = document.getElementById('input')
+            const token = document.createElement('input')
             token.value = document.getElementsByName('_csrf')[0].value
             token.name = '_csrf'
             token.type = 'hidden'
