@@ -44,11 +44,6 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
-            const id = document.createElement('input')
-            id.value = file.id
-            id.disabled = true
-            item.appendChild(id)
-
             const label = document.createElement('label')
             label.textContent = 'Tags'
             item.appendChild(label)
@@ -57,6 +52,11 @@
             tags.textContent = file.tags
             tags.rows = 2
             item.appendChild(tags)
+
+            const id = document.createElement('input')
+            id.value = file.id
+            id.disabled = true
+            item.appendChild(id)
         }
         const search = async () => {
             const tags = document.getElementById('tags').value
