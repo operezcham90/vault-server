@@ -44,19 +44,46 @@
             const hr = document.createElement('hr')
             item.appendChild(hr)
 
+            const update = document.createElement('form')
+            update.action = 'update'
+            update.method = 'post'
+            item.appendChild(update)
+
             const label = document.createElement('label')
             label.textContent = 'Tags'
-            item.appendChild(label)
+            update.appendChild(label)
 
             const tags = document.createElement('textarea')
+            tags.name = 'tags'
             tags.textContent = file.tags
             tags.rows = 2
-            item.appendChild(tags)
+            update.appendChild(tags)
 
             const id = document.createElement('input')
             id.value = file.id
-            id.disabled = true
-            item.appendChild(id)
+            id.name = 'id'
+            id.type = 'hidden'
+            update.appendChild(id)
+
+            const token = document.getElementById('input')
+            token.value = document.getElementsByName('_csrf')[0].value
+            token.name = '_csrf'
+            token.type = 'hidden'
+            update.appendChild(token)
+
+            const discard = document.createElement('input')
+            discard.type = 'checkbox'
+            discard.name = 'discard'
+            update.appendChild(discard)
+
+            const warning = documment.createElement('label')
+            label.textContent = 'Discard this file 🚮'
+            update.appendChild(warning)
+
+            const button = document.getElementById('input')
+            button.type = 'submit'
+            button.value = 'Update 💾'
+            update.appendChild(button)
         }
         const search = async () => {
             const tags = document.getElementById('tags').value
