@@ -77,10 +77,10 @@
             update.appendChild(discard)
 
             const warning = document.createElement('label')
-            label.textContent = 'Discard this file 🚮'
+            warning.textContent = 'Discard this file 🚮'
             update.appendChild(warning)
 
-            const button = document.getElementById('input')
+            const button = document.createElement('input')
             button.type = 'submit'
             button.value = 'Update 💾'
             update.appendChild(button)
