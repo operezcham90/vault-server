@@ -30,13 +30,9 @@ class File {
                 id: id,
                 tags: t
             }
-            let matches = 0
-            for (const word of words) {
-                if (file.tags.indexOf(word) >= 0) {
-                    matches++
-                }
-            }
-            if (matches > 0 || !words) {
+            const exp = new RegExp('(' + words.join('|') + ')', 'g')
+            const matches = file.tags.match(exp) || []
+            if (words.length === matches.length) {
                 files.push(file)
             }
         }
