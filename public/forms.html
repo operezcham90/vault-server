@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Vault Server 📦</title>
+    <script>
+        const view = {
+            make: (id) => {
+                const section = document.createElement('section')
+                section.id = id
+                return section
+            },
+            add: (section, tag) => {
+                const element = document.createElement(tag)
+                section.appendChild(element)
+                return element
+            },
+            form: {
+                submit: async (event) => {
+                    const form = event.target
+                    const data = new FormData(form)
+                    const method = form.method.toLowerCase()
+                    let body = data
+                    let action = form.action
+                    if (method === 'get') {
+                        const url = new URL(form.action)
+                        url.searchParams = new URLSearchParams(data)
+                        action = url.toString()
+                        body = null
+                    }
+                    console.log(body)
+                    console.log(action)
+                    console.log(method)
+                    try {
+                        const response = await fetch(action, {
+                            method: method,
+                            body: body,
+                        })
+                        console.log(response)
+                    } catch (error) {
+                        console.error(error)
+                    }
+                },
+                make: (action, method) => {
+                    const form = document.createElement('form')
+                    form.action = action
+                    form.method = method
+                    form.onsubmit = async (event) => {
+                        event.preventDefault()
+                        await form.submit(event)
+                    }
+                    const input = document.createElement('input')
+                    input.type = 'text'
+                    input.name = 'method'
+                    input.value = method
+                    form.appendChild(input)
+                    const submit = document.createElement('input')
+                    submit.type = 'submit'
+                    submit.value = action
+                    form.appendChild(submit)
+                    document.body.appendChild(form)
+                }
+            }
+        }
+        window.onload = async () => {
+            form.make('index.html', 'post')
+            form.make('index.html', 'get')
+        }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
